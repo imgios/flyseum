@@ -1,18 +1,5 @@
 <div class="footer sticky-bottom">
-  <div class="container-fluid box-content bg-dark text-light">
-    <div class="row">
-      <div class="col-sm text-center">
-        1st
-      </div>
-      <div class="col-sm text-center">
-        2nd
-      </div>
-      <div class="col-sm text-center">
-        3rd
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid box-content bg-light text-dark">
+  <div class="container-fluid py-5 bg-light text-dark">
     <div class="row">
       <div class="col-sm">
         <img src="./images/logo.png" class="rounded-circle" alt="Flyseum">

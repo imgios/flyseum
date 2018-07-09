@@ -8,12 +8,6 @@ body {
   border: none;
 }
 
-.box-content {
-  margin-left: 50px;
-  margin-right: 50px;
-  padding: 30px;
-}
-
 .mainbox {
   background-image: url('../images/colosseum.jpg');
   background-repeat: no-repeat;

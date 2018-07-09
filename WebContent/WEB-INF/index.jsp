@@ -5,8 +5,8 @@
     <%@include file="./parts/meta.jsp"%>
     <%@include file="./parts/head.jsp"%>
     <title>Flyseum</title>
-    <!-- index js -->
-    <!-- <script src="./js/randomflight.js"></script> -->
+    <!-- various index js -->
+    <script src="./js/flighttype.js"></script> <!-- flight type switch -->
   </head>
   <body>
     <%@include file="./parts/navbar.jsp"%>
@@ -24,7 +24,7 @@
           <div class="form-group">
             <div class="row">
               <div class="col-sm">
-                <select class="custom-select" id "destination" name="destination" required>
+                <select class="custom-select" id="destination" name="destination" required>
                   <option value="amsterdam">Amsterdam</option>
                   <option value="cracovia">Cracovia</option>
                   <option value="parigi">Parigi</option>
@@ -33,6 +33,7 @@
               </div>
               <div class="col-sm">
                 <input type="date" id="aDate" name="aDate" required>
+                <script src="./js/todaydate.js"></script>
                 <input type="date" id="rDate" name="rDate" required>
               </div>
             </div>
@@ -41,7 +42,7 @@
         </form>
       </div>
     </div>
-    <div class="container-fluid bg-white text-dark box-content mx-auto">
+    <div class="py-5 container-fluid bg-white text-dark box-content mx-auto">
       <div class="row mx-auto">
         <div class="col-sm">
           <div class="card" style="width: 18rem;">
@@ -80,7 +81,22 @@
           </div>
         </div>
       </div>
+      <!-- random destination -->
       <script src="./js/randomflight.js"></script>
+      <!-- end random destination -->
+    </div>
+    <div class="py-5 container-fluid bg-dark text-light">
+      <div class="row">
+        <div class="col-sm text-center">
+          1st
+        </div>
+        <div class="col-sm text-center">
+          2nd
+        </div>
+        <div class="col-sm text-center">
+          3rd
+        </div>
+      </div>
     </div>
     <%@include file="./parts/footer.jsp"%>
   </body>
