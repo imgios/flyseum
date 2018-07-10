@@ -17,16 +17,13 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
     </ul>
     <ul class="navbar-nav text-inline my-2 my-lg-0">
       <!-- including cookies -->
       <%@include file="./cookie.jsp"%>
       <% if (namecookie != null) { %>
       <li class="nav-item">
-        <a class="nav-link" href="./profile.jsp">Bentornato, <% out.print(namecookie.getValue()); %>!</a>
+        <a class="nav-link" href="./profile.jsp">Bentornato, <%out.print(namecookie.getValue());%>!</a>
       </li>
       <li class="nav-item">
         <form class="form-inline" action="Logout" method="post">
@@ -35,11 +32,11 @@
           </button>
         </form>
       </li>
-      <% } else { %>
+      <%} else {%>
       <li class="nav-item">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Accedi <i class="fas fa-sign-in-alt"></i></button>
       </li>
-      <% } %>
+      <%}%>
     </ul>
   </div>
 </nav>
