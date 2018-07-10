@@ -46,7 +46,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel"><i class="fas fa-sign-in-alt"></i> Accedi</h5>
+        <h5 class="modal-title" id="loginModalLabel">Accedi</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -77,7 +77,7 @@
           </div>
         </form>
         <hr>
-        <small><a href="./register.jsp">Nuovo utente? Clicca qui per registrarti! <i class="fas fa-user-plus"></i></a></small>
+        <small><a href="./register.jsp">Nuovo utente? Clicca qui per registrarti! <i class="fas fa-sign-in-alt"></i></a></small>
       </div>
     </div>
   </div>
