@@ -9,10 +9,11 @@
   <body>
     <%Boolean duplicate = (Boolean) request.getAttribute("denied");%>
     <%@include file="./parts/navbar.jsp"%>
-    <div class="container-fluid bg-light">
+    <div class="container-fluid bg-light py-5">
       <div class="row">
-        <div class="col-sm">
-          text
+        <div class="col-sm my-5">
+          <p class="h1 text-center text-warning"><i class="fas fa-paper-plane"></i></p>
+          <p class="text-justify px-5">orem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia pharetra purus, sed cursus sem gravida sit amet. Donec cursus est sed lacus commodo faucibus. Fusce accumsan risus sed sodales pharetra. Praesent tempor quis leo sit amet imperdiet. Sed elementum felis sit amet quam maximus, id venenatis diam vestibulum. Quisque efficitur, turpis eu malesuada lacinia, augue est fringilla est, a sollicitudin mi neque ac nunc. Quisque cursus volutpat maximus. Duis dapibus convallis ante quis ultrices. Sed in erat sem. Fusce leo diam, pharetra at aliquet at, pretium et ante. Nam tincidunt imperdiet augue, ac accumsan tortor tempor nec. Suspendisse vulputate et felis nec ornare. Suspendisse nisi eros, convallis sit amet sem id, consequat porta mauris.</p>
         </div>
         <div class="col-sm">
           <p class="h4">Registrati a Flyseum</p>
@@ -34,7 +35,7 @@
             </div>
             <div class="form-group">
               <label for="regPsw">Password</label>
-              <input type="password" id="regPsw" class="form-control" aria-describedby="helpPsw" required>
+              <input type="password" id="regPsw" class="form-control" aria-describedby="helpPsw" placeholder="Inserisci la password" required>
               <small id="helpPsw" class="form-text text-muted">La password dev'essere di minimo 8 caratteri e non deve contenere lettere accentate.</small>
             </div>
             <div class="form-group form-check">

@@ -7,6 +7,7 @@
     <title>Flyseum</title>
     <!-- various index js -->
     <script src="./js/flighttype.js"></script> <!-- flight type switch -->
+    <script src="./js/slider.js"></script> <!-- suggested destination slider -->
   </head>
   <body>
     <%@include file="./parts/navbar.jsp"%>
@@ -42,7 +43,8 @@
         </form>
       </div>
     </div>
-    <div class="py-5 container-fluid bg-white text-dark box-content mx-auto">
+    <div class="py-3 container-fluid bg-white text-dark text-center mx-auto">
+      <p class="h5">Mete consigliate per te</p>
       <div class="row mx-auto">
         <div class="col-sm">
           <div class="card" style="width: 18rem;">
@@ -85,16 +87,20 @@
       <script src="./js/randomflight.js"></script>
       <!-- end random destination -->
     </div>
-    <div class="py-5 container-fluid bg-dark text-light">
-      <div class="row">
-        <div class="col-sm text-center">
-          1st
+    <div class="py-5 container-fluid text-center bg-light text-dark">
+      <p class="h5">Perché Flyseum?</p>
+      <div class="row px-5">
+        <div class="col-sm">
+          <p class="mb-0 h2 text-center text-danger"><i class="far fa-question-circle"></i></p>
+          <p class="mb-0 text-justify">Flyseum è il motore di ricerca di viaggi che trova il volo più adatto a te, da Roma verso qualsiasi capitale europea, mostrandoti la miglior offerta presenta sul mercato!</p>
         </div>
-        <div class="col-sm text-center">
-          2nd
+        <div class="col-sm">
+          <p class="mb-0 h2 text-center text-primary"><i class="far fa-thumbs-up"></i></p>
+          <p class="mb-0 text-justify">Scegli la destinazione, la data ed il volo. Al resto ci pensa Flyseum! Flyseum trova il volo più adatto a te, semplificando l'intero processo di prenotazione!</p>
         </div>
-        <div class="col-sm text-center">
-          3rd
+        <div class="col-sm">
+          <p class="mb-0 h2 text-center text-success"><i class="fas fa-share-alt"></i></p>
+          <p class="mb-0 text-justify">Seguici su Facebook, Twitter, Instagram e Youtube per scoprire tutte le novità su Flyseum, trovare spunti e consigli di viaggio e per raccontarci un po' della tua vita da viaggiatore!</p>
         </div>
       </div>
     </div>
