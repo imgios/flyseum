@@ -3,6 +3,8 @@
   "sessionalive": 86400000,
   "logouturl": "../index.jsp",
   "refreshCallbackUrl": "./"}'></span>
+<!-- validation script -->
+<script src="./js/user-form-validate.js"></script>
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <a class="navbar-brand" href="#"><img src="./images/logo.png" width="30" height="30"></a>
@@ -46,21 +48,21 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Accedi</h5>
+        <h5 class="modal-title" id="loginModalLabel"><i class="fas fa-sign-in-alt"></i> Accedi</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="Login" method="post">
+        <form action="Login" method="post" name="loginForm">
           <div class="form-group">
             <label for="loginEmail">Indirizzo email</label>
-            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailhHelp" placeholder="Email">
+            <input type="email" class="form-control" id="loginEmail" name="email" aria-describedby="emailhHelp" placeholder="Email" required>
             <small id="emailHelp" class="form-text text-muted">Inserisci l'email utilizzata al momento della registrazione.</small>
           </div>
           <div class="form-group">
             <label for="loginPsw">Password</label>
-            <input type="password" class="form-control" id="loginPsw" aria-describedby="pswHelp" placeholder="Password">
+            <input type="password" class="form-control" id="loginPsw" name="password" aria-describedby="pswHelp" placeholder="Password" required>
             <small id="pswHelp" class="form-text text-muted">Inserisci la password utilizzata al momento della registrazione.</small>
           </div>
           <div class="row">
@@ -72,12 +74,12 @@
             </div>
             <div class="col-sm text-right">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Chiudi</button>
-              <button type="submit" class="btn btn-success">Login</button>
+              <button type="submit" onclick="return validate(this.form)" class="btn btn-success">Login</button>
             </div>
           </div>
         </form>
         <hr>
-        <small><a href="./register.jsp">Nuovo utente? Clicca qui per registrarti! <i class="fas fa-sign-in-alt"></i></a></small>
+        <small><a href="./register.jsp">Nuovo utente? Clicca qui per registrarti! <i class="fas fa-user-plus"></i></a></small>
       </div>
     </div>
   </div>

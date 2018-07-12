@@ -12,13 +12,14 @@
       <div class="col-sm">
         <address>
           <p class="font-weight-bold">Flyseum</p>
-          <p class="font-weight-light">Piazza del Colosseo, 1
-          <br/>Roma, RM 00184
-          <br/>06 0606
+          <p class="font-weight-light">Dipartimento di Informatica <span class="text-muted small">UNISA</span>
+          <br/>Fisciano, SA 84084
+          <br/>089 969600
           <br />
           <br /><a href="mailto:info@flyseum.com">info@flyseum.com</a></p>
         </address>
       </div>
     </div>
+    <p class="text-center text-muted small mt-5">Made with <i class="fas fa-heart text-danger"></i> by <a href="http://www.instagram.com/imgios" class="text-light font-weight-bold">@imgios</a>, <a href="http://www.instagram.com/acupito" class="text-light font-weight-bold">@acupito</a>, <a href="http://www.instagram.com/frank.iovane" class="text-light font-weight-bold">@frank.iovane</a></p>
   </div>
 </div>

@@ -23,19 +23,19 @@
               <div class="alert alert-danger" role="alert">Email già esistente!</div>
               <% } %>
               <label for="regName">Nome</label>
-              <input type="text" id="regName" class="form-control" placeholder="Inserisci il nome" required>
+              <input type="text" id="regName" name="name" class="form-control" placeholder="Inserisci il nome" required>
             </div>
             <div class="form-group">
               <label for="regSurname">Cognome</label>
-              <input type="text" id="regSurname" class="form-control" placeholder="Inserisci il cognome" required>
+              <input type="text" id="regSurname" name="surname" class="form-control" placeholder="Inserisci il cognome" required>
             </div>
             <div class="form-group">
               <label for="regEmail">Email</label>
-              <input type="email" id="regEmail" class="form-control" placeholder="Inserisci l'email" required>
+              <input type="email" id="regEmail" name="email" class="form-control" placeholder="Inserisci l'email" required>
             </div>
             <div class="form-group">
               <label for="regPsw">Password</label>
-              <input type="password" id="regPsw" class="form-control" aria-describedby="helpPsw" placeholder="Inserisci la password" required>
+              <input type="password" id="regPsw" name="password" class="form-control" aria-describedby="helpPsw" placeholder="Inserisci la password" required>
               <small id="helpPsw" class="form-text text-muted">La password dev'essere di minimo 8 caratteri e non deve contenere lettere accentate.</small>
             </div>
             <div class="form-group form-check">

@@ -19,12 +19,12 @@ body {
   height: 333px;
 }
 
-.iframe-container{
+.iframe-container {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
 }
-.iframe-container > *{
+.iframe-container > * {
     display: block;
     position: absolute;
     top: 0;
@@ -35,4 +35,14 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
+}
+
+dt, dd {
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+dt {
+  clear:both;
 }
