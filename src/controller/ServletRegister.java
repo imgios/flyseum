@@ -34,27 +34,28 @@ public class ServletRegister extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		String ID = request.getParameter("email");
-		String password = request.getParameter("password");
-		String nome = request.getParameter("nome");
-		String cognome = request.getParameter("cognome");
+		String ID = request.getParameter("userEmail");
+		String password = request.getParameter("userPassword");
+		String nome = request.getParameter("userName");
+		String cognome = request.getParameter("userSurname");
 		
 		try {
 			UserBeanDAO ubDAO = new UserBeanDAO();
 			UserBean ub = ubDAO.UserRegistration(ID,password,nome,cognome);
 			
 			if(ub.getEmail() != "duplicato" &&  ub.getPsw() != "duplicato" ) {
-				RequestDispatcher rq = request.getRequestDispatcher("./success.jsp");
+				//RequestDispatcher rq = request.getRequestDispatcher("./success.jsp");
+				RequestDispatcher rq = request.getRequestDispatcher("./index.jsp");
 				rq.forward(request, response);
 			}
 			else {
 				request.setAttribute("duplicato", true);
-				RequestDispatcher rq2 = request.getRequestDispatcher("./Registration.jsp");
+				RequestDispatcher rq2 = request.getRequestDispatcher("./register.jsp");
 				rq2.forward(request, response);
 			}
 		}catch(Exception e) {
 			request.setAttribute("exception", true);
-			RequestDispatcher rq3 = request.getRequestDispatcher("./Exception.jsp");
+			RequestDispatcher rq3 = request.getRequestDispatcher("./exception.jsp");
 			rq3.forward(request, response);
 		}
 	}
