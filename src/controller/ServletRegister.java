@@ -32,7 +32,6 @@ public class ServletRegister extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		String ID = request.getParameter("userEmail");
 		String password = request.getParameter("userPassword");
@@ -44,8 +43,7 @@ public class ServletRegister extends HttpServlet {
 			UserBean ub = ubDAO.UserRegistration(ID,password,nome,cognome);
 			
 			if(ub.getEmail() != "duplicato" &&  ub.getPsw() != "duplicato" ) {
-				//RequestDispatcher rq = request.getRequestDispatcher("./success.jsp");
-				RequestDispatcher rq = request.getRequestDispatcher("./index.jsp");
+				RequestDispatcher rq = request.getRequestDispatcher("./infopages/success.jsp");
 				rq.forward(request, response);
 			}
 			else {
@@ -54,8 +52,8 @@ public class ServletRegister extends HttpServlet {
 				rq2.forward(request, response);
 			}
 		}catch(Exception e) {
-			request.setAttribute("exception", true);
-			RequestDispatcher rq3 = request.getRequestDispatcher("./exception.jsp");
+			request.setAttribute("exception", e);
+			RequestDispatcher rq3 = request.getRequestDispatcher("./infopages/error.jsp");
 			rq3.forward(request, response);
 		}
 	}

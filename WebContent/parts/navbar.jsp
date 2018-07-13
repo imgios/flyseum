@@ -55,7 +55,7 @@
       <div class="modal-body">
       	<%Boolean denied = (Boolean) request.getAttribute("denied");%>
       	<% if (denied != null) { %>
-        <div class="alert alert-danger" role="alert">I dati non sono corretti! Riprova.
+        <div class="alert alert-danger" role="alert">I dati non sono corretti! Riprova.</div>
         <% } %>
         <form action="ServletLogin" method="post" name="loginForm">
           <div class="form-group">
