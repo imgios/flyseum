@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
+//import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,8 +38,8 @@ public class ServletLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("email");
-		String pwd = (String) session.getAttribute("pwd");
+		String email = (String) session.getAttribute("loginEmail");
+		String pwd = (String) session.getAttribute("loginPsw");
 		UserBean beanUser = null;
 		
 		try {	
@@ -47,15 +47,15 @@ public class ServletLogin extends HttpServlet {
 			CartBean cartUser = new CartBean();
 			CartBeanDAO cartUserDAO = new CartBeanDAO();
 			
-			cartUser = cartUserDAO.restore(email);
+			/*cartUser = cartUserDAO.restore(email);
 			if(cartUser.isEmpty()) {
 				cartUser = new CartBean();
-			}
+			}*/
 			
 			beanUser = beanUserD.doRetrieveByKey(email,pwd);
 			if(beanUser == null) {
 				request.setAttribute("denied", true);
-				RequestDispatcher rq = request.getRequestDispatcher("./login.jsp");
+				RequestDispatcher rq = request.getRequestDispatcher("./register.jsp");
 				rq.forward(request, response);
 			}
 			else {

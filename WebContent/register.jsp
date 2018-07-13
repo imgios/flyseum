@@ -7,7 +7,7 @@
     <title>Flyseum - Registrati</title>
   </head>
   <body>
-    <%Boolean duplicate = (Boolean) request.getAttribute("denied");%>
+    <%Boolean duplicate = (Boolean) request.getAttribute("duplicate");%>
     <%@include file="./parts/navbar.jsp"%>
     <div class="container-fluid bg-light py-5">
       <div class="row">
@@ -17,32 +17,28 @@
         </div>
         <div class="col-sm">
           <p class="h4">Registrati a Flyseum</p>
-          <form action="Register" method="post">
+          <form action="ServletRegister" name="registerForm" method="post" novalidate>
             <div class="form-group">
               <% if (duplicate != null) { %>
               <div class="alert alert-danger" role="alert">Email già esistente!</div>
               <% } %>
-              <label for="regName">Nome</label>
-              <input type="text" id="regName" name="name" class="form-control" placeholder="Inserisci il nome" required>
+              <label for="regName">Nome <span class="badge badge-danger" id="nameInvalid" hidden><i class="fas fa-exclamation-triangle"></i> invalido</span></label>
+              <input type="text" id="regName" name="userName" class="form-control" placeholder="Inserisci il nome" required>
             </div>
             <div class="form-group">
-              <label for="regSurname">Cognome</label>
-              <input type="text" id="regSurname" name="surname" class="form-control" placeholder="Inserisci il cognome" required>
+              <label for="regSurname">Cognome <span class="badge badge-danger" id="surnameInvalid" hidden><i class="fas fa-exclamation-triangle"></i> invalido</span></label>
+              <input type="text" id="regSurname" name="userSurname" class="form-control" placeholder="Inserisci il cognome" required>
             </div>
             <div class="form-group">
-              <label for="regEmail">Email</label>
-              <input type="email" id="regEmail" name="email" class="form-control" placeholder="Inserisci l'email" required>
+              <label for="regEmail">Email <span class="badge badge-danger" id="emailInvalid" hidden><i class="fas fa-exclamation-triangle"></i> invalido</span></label>
+              <input type="email" id="regEmail" name="userEmail" class="form-control" placeholder="Inserisci l'email" required>
             </div>
             <div class="form-group">
-              <label for="regPsw">Password</label>
-              <input type="password" id="regPsw" name="password" class="form-control" aria-describedby="helpPsw" placeholder="Inserisci la password" required>
+              <label for="regPsw">Password <span class="badge badge-danger" id="pswInvalid" hidden><i class="fas fa-exclamation-triangle"></i> invalido</span></label>
+              <input type="password" id="regPsw" name="userPassword" class="form-control" aria-describedby="helpPsw" placeholder="Inserisci la password" required>
               <small id="helpPsw" class="form-text text-muted">La password dev'essere di minimo 8 caratteri e non deve contenere lettere accentate.</small>
             </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="regRemember">
-              <label class="form-check-label" for="regRemember">Ricordami</label>
-            </div>
-            <button type="submit" class="btn btn-dark">Registrati</button>
+            <button type="submit" onclick="return validate(this.form)" class="btn btn-dark">Registrati</button>
           </form>
           <small class="text-muted">Flyseum non condividerà con nessuno i dati inseriti dall'utente.</small>
         </div>

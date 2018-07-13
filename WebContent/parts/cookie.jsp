@@ -1,4 +1,4 @@
-<%
+<%--<%
 Cookie [] cookies = request.getCookies();
 	      Cookie emailcookie=null;
 	      Cookie rolecookie=null;
@@ -22,3 +22,15 @@ Cookie [] cookies = request.getCookies();
 		        }
 	        }
 %>
+--%>
+
+<%-- userbean to add --%>
+<%@page import="model.UserBean"%>
+<% UserBean user = (UserBean) session.getAttribute("UserBean"); %>
+<%-- cartbean to add --%>
+<%@page import="model.CartBean"%>
+<% CartBean cart = (CartBean) session.getAttribute("cart"); %>
+<%-- flightbean to add --%>
+<%@page import="model.ProductBean"%>
+<%-- flightbeanDAO to add --%>
+<%@page import="model.ProductBeanDAO"%>

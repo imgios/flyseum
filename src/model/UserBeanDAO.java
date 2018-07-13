@@ -10,7 +10,7 @@ public class UserBeanDAO {
 		 try {
 			UserBean ub = new UserBean(email, password); 
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM accesso.registration WHERE login = ? AND password = ?");
+			ps = conn.prepareStatement("SELECT * FROM user WHERE email = ? AND password = ?");
 			ps.setString(1, email);
 			ps.setString(2, password);
 					
@@ -19,8 +19,8 @@ public class UserBeanDAO {
 			// 4. Prendi il risultato
 			if(res.next())
 			{
-				ub.setNome(res.getString("nome"));
-				ub.setCognome(res.getString("cognome"));
+				ub.setNome(res.getString("name"));
+				ub.setCognome(res.getString("surname"));
 				
 				return ub;
 			}
@@ -46,13 +46,13 @@ public class UserBeanDAO {
 		 
 		 try {
 			 conn = ConnectionPool.getConnection();
-			 String sqlString = new String("INSERT INTO Users(nome,password,cognome,ID) VALUES(?,?,?,?)");
+			 String sqlString = new String("INSERT INTO user(name,surname,password,email) VALUES(?,?,?,?)");
 			 ps = conn.prepareStatement(sqlString);
 			 
-			 ps.setString(1, email);
-			 ps.setString(2, password);
-			 ps.setString(3, name);
-			 ps.setString(4, surname);
+			 ps.setString(1, name);
+			 ps.setString(2, surname);
+			 ps.setString(3, password);
+			 ps.setString(4, email);
 			 
 			 int upd = ps.executeUpdate();
 			 
