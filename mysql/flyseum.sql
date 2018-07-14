@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.11, for Linux (x86_64)
 --
--- Host: localhost    Database: flyseum.org
+-- Host: localhost    Database: flyseum
 -- ------------------------------------------------------
 -- Server version	8.0.11
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+ SET NAMES utf8mb4 ;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,11 +21,10 @@
 
 DROP TABLE IF EXISTS `flight`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `flight` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `destination` varchar(45) NOT NULL,
-  `time` varchar(45) NOT NULL,
   `company` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -46,13 +45,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `flightinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `flightinfo` (
   `idflight` int(11) NOT NULL,
-  `departure` date NOT NULL,
-  `arrival` date NOT NULL,
-  `passengers` int(11) NOT NULL DEFAULT '0',
-  `maxpassengers` int(11) NOT NULL DEFAULT '200',
+  `departure` datetime NOT NULL,
+  `arrival` datetime NOT NULL,
+  `passengers` int(11) DEFAULT '0',
+  `maxpassengers` int(11) DEFAULT '200',
   PRIMARY KEY (`idflight`),
   CONSTRAINT `fk_flightid` FOREIGN KEY (`idflight`) REFERENCES `flight` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -73,19 +72,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `name` varchar(25) NOT NULL,
   `surname` varchar(25) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `birthday` date NOT NULL,
-  `phone` varchar(10) NOT NULL,
-  `role` varchar(10) DEFAULT 'user',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `phone_UNIQUE` (`phone`)
+  `telephone` varchar(10) DEFAULT NULL,
+  `role` varchar(5) DEFAULT 'user',
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -107,4 +101,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-12 12:41:14
+-- Dump completed on 2018-07-14 14:11:02
