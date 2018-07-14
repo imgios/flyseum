@@ -20,9 +20,10 @@ public class ConnectionPool {
 	
 	private static synchronized Connection createDBConnection() throws SQLException {
 		Connection newConnection = null;
-		final String DB_URL_with_SSL = "jdbc:mysql://localhost/flyseum.org?verifyServerCertificate=false&useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-		String username = "root";
-		String password = "admin";
+		//final String DB_URL_with_SSL = "jdbc:mysql://localhost/flyseum?verifyServerCertificate=false&useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		final String DB_URL_with_SSL = "jdbc:mysql://db4free.net:3306/flyseum?autoReconnect=true&useSSL=false";
+		String username = "superflyseum";
+		String password = "12345678";
 
 		newConnection = DriverManager.getConnection(DB_URL_with_SSL, username, password);
 
