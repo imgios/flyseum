@@ -46,13 +46,13 @@ public class UserBeanDAO {
 		 
 		 try {
 			 conn = ConnectionPool.getConnection();
-			 String sqlString = new String("INSERT INTO user(name,surname,email,password) VALUES(?,?,?,?)");
+			 String sqlString = new String("INSERT INTO user(email,password,name,surname) VALUES(?,?,?,?)");
 			 ps = conn.prepareStatement(sqlString);
 			 
-			 ps.setString(1, name);
-			 ps.setString(2, surname);
-			 ps.setString(3, email);
-			 ps.setString(4, password);
+			 ps.setString(1, email);
+			 ps.setString(2, password);
+			 ps.setString(3, name);
+			 ps.setString(4, surname);
 			 
 			 int upd = ps.executeUpdate();
 			 
@@ -72,6 +72,7 @@ public class UserBeanDAO {
 		 }
 		 finally {
 			 try {
+				 conn.commit();
 				 ps.close();
 				 ConnectionPool.releaseConnection(conn);
 			 }
