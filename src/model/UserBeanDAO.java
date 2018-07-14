@@ -72,7 +72,7 @@ public class UserBeanDAO {
 		 }
 		 finally {
 			 try {
-				 conn.commit();
+				 //conn.commit();
 				 ps.close();
 				 ConnectionPool.releaseConnection(conn);
 			 }

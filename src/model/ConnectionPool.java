@@ -27,7 +27,7 @@ public class ConnectionPool {
 
 		newConnection = DriverManager.getConnection(DB_URL_with_SSL, username, password);
 
-		newConnection.setAutoCommit(false);
+		newConnection.setAutoCommit(true);
 		return newConnection;
 	}
 
