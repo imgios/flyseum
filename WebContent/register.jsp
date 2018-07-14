@@ -21,6 +21,8 @@
             <div class="form-group">
               <% if (duplicate != null) { %>
               <div class="alert alert-danger" role="alert">Email già esistente!</div>
+              <% } else if (denied != null) {%>
+              <div class="alert alert-danger" role="alert">I dati inseriti sono errati!</div>
               <% } %>
               <label for="regName">Nome <span class="badge badge-danger" id="nameInvalid" hidden><i class="fas fa-exclamation-triangle"></i> invalido</span></label>
               <input type="text" id="regName" name="userName" class="form-control" placeholder="Inserisci il nome" required>
