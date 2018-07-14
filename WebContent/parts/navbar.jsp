@@ -6,6 +6,7 @@
 <!-- validation script -->
 <script src="./js/user-form-validate.js"></script>
 <!-- start navbar -->
+<%@ include file="./cookie.jsp" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <a class="navbar-brand" href="#"><img src="./images/logo.png" width="30" height="30"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,11 +22,9 @@
       </li>
     </ul>
     <ul class="navbar-nav text-inline my-2 my-lg-0">
-      <!-- including cookies -->
-      <%@include file="./cookie.jsp"%>
-      <% if (namecookie != null) { %>
+      <% if (user != null) { %>
       <li class="nav-item">
-        <a class="nav-link" href="./profile.jsp">Bentornato, <%out.print(namecookie.getValue());%>!</a>
+        <a class="nav-link" href="./profile.jsp">Bentornato, <%out.print(user.getNome());%>!</a>
       </li>
       <li class="nav-item">
         <form class="form-inline" action="Logout" method="post">
@@ -54,15 +53,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="Login" method="post" name="loginForm">
+      	<%Boolean denied = (Boolean) request.getAttribute("denied");%>
+      	<% if (denied != null) { %>
+        <div class="alert alert-danger" role="alert">I dati non sono corretti! Riprova.</div>
+        <% } %>
+        <form action="ServletLogin" method="post" name="loginForm">
           <div class="form-group">
             <label for="loginEmail">Indirizzo email</label>
-            <input type="email" class="form-control" id="loginEmail" name="email" aria-describedby="emailhHelp" placeholder="Email" required>
+            <input type="email" class="form-control" id="loginEmail" name="userEmail" aria-describedby="emailhHelp" placeholder="Email" required>
             <small id="emailHelp" class="form-text text-muted">Inserisci l'email utilizzata al momento della registrazione.</small>
           </div>
           <div class="form-group">
             <label for="loginPsw">Password</label>
-            <input type="password" class="form-control" id="loginPsw" name="password" aria-describedby="pswHelp" placeholder="Password" required>
+            <input type="password" class="form-control" id="loginPsw" name="userPassword" aria-describedby="pswHelp" placeholder="Password" required>
             <small id="pswHelp" class="form-text text-muted">Inserisci la password utilizzata al momento della registrazione.</small>
           </div>
           <div class="row">

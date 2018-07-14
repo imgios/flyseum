@@ -5,14 +5,14 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
+//import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.CartBean;
-import model.CartBeanDAO;
+//import model.CartBean;
+//import model.CartBeanDAO;
 import model.UserBean;
 import model.UserBeanDAO;
 
@@ -36,37 +36,36 @@ public class ServletLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("email");
-		String pwd = (String) session.getAttribute("pwd");
+		String email = request.getParameter("userEmail");
+		String pwd = request.getParameter("userPassword");
 		UserBean beanUser = null;
 		
 		try {	
 			UserBeanDAO beanUserD = new UserBeanDAO();
-			CartBean cartUser = new CartBean();
-			CartBeanDAO cartUserDAO = new CartBeanDAO();
+			/*CartBean cartUser = new CartBean();
+			CartBeanDAO cartUserDAO = new CartBeanDAO();*/
 			
-			cartUser = cartUserDAO.restore(email);
+			/*cartUser = cartUserDAO.restore(email);
 			if(cartUser.isEmpty()) {
 				cartUser = new CartBean();
-			}
+			}*/
 			
-			beanUser = beanUserD.doRetrieveByKey(email,pwd);
+			beanUser = beanUserD.doRetrieveByKey(email, pwd);
 			if(beanUser == null) {
 				request.setAttribute("denied", true);
-				RequestDispatcher rq = request.getRequestDispatcher("./login.jsp");
+				RequestDispatcher rq = request.getRequestDispatcher("./register.jsp");
 				rq.forward(request, response);
 			}
 			else {
 				session.setAttribute("UserBean", beanUser);
-				session.setAttribute("cart", cartUser);
-				RequestDispatcher rq = request.getRequestDispatcher("./index.jsp");
+				//session.setAttribute("cart", cartUser);
+				RequestDispatcher rq = request.getRequestDispatcher("./infopages/success.jsp");
 				rq.forward(request, response);
 			}
 		}catch(Exception e){
 			request.setAttribute("exception", e);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("./servicepage/exception.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("./infopages/error.jsp");
 			requestDispatcher.forward(request, response);
 			}
 	}
