@@ -39,8 +39,6 @@ public class ServletLogin extends HttpServlet {
 		HttpSession session = request.getSession();
 		String email = request.getParameter("userEmail");
 		String pwd = request.getParameter("userPassword");
-		System.out.print(email);
-		System.out.print(pwd);
 		UserBean beanUser = null;
 		
 		try {	
@@ -67,7 +65,7 @@ public class ServletLogin extends HttpServlet {
 			}
 		}catch(Exception e){
 			request.setAttribute("exception", e);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("./servicepage/exception.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("./infopages/error.jsp");
 			requestDispatcher.forward(request, response);
 			}
 	}

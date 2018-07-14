@@ -7,16 +7,20 @@
     <meta charset="utf-8">
     <title>Errore - Flyseum</title>
   </head>
-  <body>
-    <div class="container w-50 p-5 border border-danger">
-      <p class="h3"><span class="small"><i class="em em-exclamation"></i></span> Errore!</p>
-      <p class="my-0">Non è stato possibile eseguire la richiesta.</p>
-      <p class="small">Exception:</p>
-      <% Exception e = (Exception) request.getAttribute("exception");%>
-      <p class="small text-muted">
-        <% e.toString(); %>
-      </p>
-      <p class="text-right"><a href="../index.jsp">Torna alla home</a></p>
+  <body class="bg-light">
+  	<div class="container">
+	    <div class="card w-50 text-white bg-damage my-5 mx-auto">
+		  <div class="card-header">
+		    <span class="small"><i class="fas fa-exclamation-circle"></i></span> Errore
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title">Non è stato possibile eseguire la richiesta.</h5>
+		    <p class="card-text">Exception:</p>
+		    <% Exception e = (Exception) request.getAttribute("exception");%>
+		    <p class="card-text small text-muted"><% e.printStackTrace(); %></p>
+		    <p class="card-text text-right"><a href="./index.jsp" class="text-white font-weight-bold">Torna alla home</a></p>
+		  </div>
+		</div>    
     </div>
   </body>
 </html>

@@ -7,7 +7,7 @@
     <title>Flyseum - Registrati</title>
   </head>
   <body>
-    <%Boolean duplicate = (Boolean) request.getAttribute("duplicate");%>
+    <%Boolean duplicate = (Boolean) request.getAttribute("duplicato");%>
     <%@include file="./parts/navbar.jsp"%>
     <div class="container-fluid bg-light py-5">
       <div class="row">
