@@ -5,6 +5,7 @@ public class UserBean {
 	private String psw;
 	private String nome;
 	private String cognome;
+	private String role;
 
 	public UserBean(String email2, String psw2) {
 		email = email2;
@@ -33,5 +34,13 @@ public class UserBean {
 	
 	public void setCognome(String c) {
 		cognome = c;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

@@ -21,6 +21,7 @@ public class UserBeanDAO {
 			{
 				ub.setNome(res.getString("name"));
 				ub.setCognome(res.getString("surname"));
+				ub.setRole(res.getString("role"));
 				
 				return ub;
 			}
