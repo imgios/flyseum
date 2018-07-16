@@ -2,10 +2,11 @@ package model;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ProductBeanDAO {
-	public synchronized ProductBean newProduct(String uMeta, String uPartenza, String uID, String uCompagnia,
-			Float uPrezzo, Date uData) {
+	public synchronized ProductBean newProduct(String destinazione, String partenza, String compagnia,
+			Float prezzo, Date dataPartenza, Date dataArrivo) {
 
 		Connection conn = null;
 		PreparedStatement prepstat = null;
@@ -14,19 +15,18 @@ public class ProductBeanDAO {
 
 			conn = ConnectionPool.getConnection();
 
-			String sqlInsert = ("insert into product (meta, partenza, ID, compagnia, prezzo, dataPartenza) values (?, ?, ?, ?, ?, ?);");
+			String sqlInsert = ("insert into flight (departure, destination, company, dateDeparture, dateArrival) values (?, ?, ?, ?, ?);");
 
 			prepstat = conn.prepareStatement(sqlInsert);
-			prepstat.setString(1, uMeta);
-			prepstat.setString(2, uPartenza);
-			prepstat.setString(3, uID);
-			prepstat.setString(4, uCompagnia);
-			prepstat.setFloat(5, uPrezzo);
-			prepstat.setDate(6, uData);
+			prepstat.setString(1, partenza);
+			prepstat.setString(2, destinazione);
+			prepstat.setString(3, compagnia);
+			prepstat.setTimestamp(4, new java.sql.Timestamp(dataPartenza.getTime()));
+			prepstat.setTimestamp(5, new java.sql.Timestamp(dataArrivo.getTime()));
 			int state = prepstat.executeUpdate();
 
 			if (state != 0) {
-				ProductBean pb = new ProductBean(uMeta, uPartenza, uID, uCompagnia, uPrezzo, uData);
+				ProductBean pb = new ProductBean(destinazione, partenza, compagnia, prezzo, dataPartenza, dataArrivo);
 				return pb;
 
 			}
@@ -46,7 +46,7 @@ public class ProductBeanDAO {
 		return null;
 	}
 	
-	public synchronized ArrayList <ProductBean> serachByName(String uString){
+	public synchronized ArrayList <ProductBean> serachByDestination(String destinazione){
 		
 		Connection conn = null;
 		PreparedStatement prepstat = null;
@@ -54,13 +54,13 @@ public class ProductBeanDAO {
 		
 		try {
 			conn = ConnectionPool.getConnection();
-			prepstat = conn.prepareStatement("SELECT * FROM viaggi WHERE destinazione LIKE ?;");
-			prepstat.setString(1, "%" + uString + "%");
+			prepstat = conn.prepareStatement("SELECT * FROM flights WHERE destination LIKE ?;");
+			prepstat.setString(1, "%" + destinazione + "%");
 			
 			ResultSet rs = prepstat.executeQuery();
 			
 			while(rs.next()) {
-				ProductBean pb = new ProductBean(rs.getString("meta"), rs.getString("partenza"), rs.getString("ID"), rs.getString("compagnia"), rs.getFloat("prezzo"), rs.getDate("dataVolo"));
+				ProductBean pb = new ProductBean(rs.getString("destination"), rs.getString("departure"), rs.getInt("id"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"));
 				search.add(pb);
 			}
 		}catch(SQLException e){
@@ -77,7 +77,7 @@ public class ProductBeanDAO {
 		return search;
 	}
 	
-	public synchronized ProductBean serachByID(String ID){
+	public synchronized ProductBean searchByID(Integer id){
 		
 		ProductBean pb = null;
 		Connection conn = null;
@@ -85,13 +85,13 @@ public class ProductBeanDAO {
 		
 		try {
 			conn = ConnectionPool.getConnection();
-			prepstat = conn.prepareStatement("SELECT * FROM viaggi WHERE id_Volo = ? ");
-			prepstat.setString(1, "%" + ID + "%");
+			prepstat = conn.prepareStatement("SELECT * FROM flights WHERE id = ?;");
+			prepstat.setInt(1, id);
 			
 			ResultSet rs = prepstat.executeQuery();
 			
 			while(rs.next()) {
-				pb = new ProductBean(rs.getString("meta"), rs.getString("partenza"), rs.getString("id_Volo"), rs.getString("compagnia"), rs.getFloat("prezzo"), rs.getDate("dataVolo"));
+				pb = new ProductBean(rs.getString("destination"), rs.getString("departure"), rs.getInt("id"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -101,7 +101,7 @@ public class ProductBeanDAO {
 				ConnectionPool.releaseConnection(conn);
 			} catch (SQLException e) {
 				e.printStackTrace();
-}
+			}
 		}
 		
 		return pb;
