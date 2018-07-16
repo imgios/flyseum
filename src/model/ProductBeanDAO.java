@@ -26,9 +26,20 @@ public class ProductBeanDAO {
 			int state = prepstat.executeUpdate();
 
 			if (state != 0) {
-				ProductBean pb = new ProductBean(destinazione, partenza, compagnia, prezzo, dataPartenza, dataArrivo);
-				return pb;
-
+				try {
+					String sqlRetrieve = ("SELECT * FROM flight WHERE departure = ? AND destination = ? AND company = ? AND dateDeparture = ? AND dateArrival = ?");
+					PreparedStatement stat = conn.prepareStatement(sqlRetrieve);
+					stat.setString(1, partenza);
+					stat.setString(2, destinazione);
+					stat.setString(3, compagnia);
+					stat.setTimestamp(4, new java.sql.Timestamp(dataPartenza.getTime()));
+					stat.setTimestamp(5, new java.sql.Timestamp(dataArrivo.getTime()));
+					ResultSet rs = stat.executeQuery();
+					ProductBean pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"), rs.getInt("passengers"));
+					return pb;
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
 			}
 
 		} catch (SQLException e) {
@@ -60,7 +71,7 @@ public class ProductBeanDAO {
 			ResultSet rs = prepstat.executeQuery();
 			
 			while(rs.next()) {
-				ProductBean pb = new ProductBean(rs.getString("destination"), rs.getString("departure"), rs.getInt("id"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"));
+				ProductBean pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"), rs.getInt("passengers"));
 				search.add(pb);
 			}
 		}catch(SQLException e){
@@ -91,7 +102,7 @@ public class ProductBeanDAO {
 			ResultSet rs = prepstat.executeQuery();
 			
 			while(rs.next()) {
-				pb = new ProductBean(rs.getString("destination"), rs.getString("departure"), rs.getInt("id"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"));
+				pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"), rs.getInt("passengers"));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
