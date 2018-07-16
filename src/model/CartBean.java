@@ -35,7 +35,7 @@ public class CartBean {
 		
 		for(ProductBean temp : this.voli) {
 			
-			if(temp.getID().equals(pb.getID())) {
+			if(temp.getId().equals(pb.getId())) {
 				
 				i = this.voli.indexOf(temp);
 				this.voli.remove(i);

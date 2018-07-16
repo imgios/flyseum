@@ -13,7 +13,7 @@ public class CartBeanDAO {
 			conn = ConnectionPool.getConnection();
 			ps = conn.prepareStatement("INSERT INTO carrello (eMail_User, id_Volo) VALUES(?,?)");
 			ps.setString(1, ub.getEmail());
-			ps.setString(2, pb.getID());
+			ps.setInt(2, pb.getId());
 			
 			int status = ps.executeUpdate();
 			
@@ -76,7 +76,7 @@ public class CartBeanDAO {
 			
 			while( res.next() ) {
 				ProductBeanDAO pbd = new ProductBeanDAO();
-				ProductBean pb = pbd.serachByID(res.getString("id_Volo"));
+				ProductBean pb = pbd.searchByID(res.getInt("id"));
 				cart.addProduct(pb);
 			}
 			
