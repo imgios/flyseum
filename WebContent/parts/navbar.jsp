@@ -24,7 +24,7 @@
     <ul class="navbar-nav text-inline my-2 my-lg-0">
       <% if (user != null) { %>
       <li class="nav-item">
-        <a class="nav-link" href="./profile.jsp">Bentornato, <%out.print(user.getNome());%>!</a>
+        <a class="nav-link" href="./profile.jsp">Bentornato, <%=user.getNome()%>!</a>
       </li>
       <li class="nav-item">
         <form class="form-inline" action="Logout" method="post">
@@ -35,7 +35,7 @@
       </li>
       <%} else {%>
       <li class="nav-item">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Accedi <i class="fas fa-sign-in-alt"></i></button>
+        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#loginModal">Accedi <i class="fas fa-sign-in-alt"></i></button>
       </li>
       <%}%>
     </ul>
