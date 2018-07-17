@@ -8,6 +8,7 @@
     <title>Errore - Flyseum</title>
   </head>
   <body class="bg-light">
+  	<%@include file="../parts/navbar.jsp" %>
   	<div class="container">
 	    <div class="card w-50 text-white bg-damage my-5 mx-auto">
 		  <div class="card-header">
@@ -22,5 +23,6 @@
 		  </div>
 		</div>    
     </div>
+    <%@include file="../parts/footer.jsp" %>
   </body>
 </html>

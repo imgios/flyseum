@@ -27,7 +27,7 @@
         <a class="nav-link" href="./profile.jsp">Bentornato, <%=user.getNome()%>!</a>
       </li>
       <li class="nav-item">
-        <form class="form-inline" action="Logout" method="post">
+        <form class="form-inline" action="ServletLogout" method="post">
           <button type="submit" id="logout" class="logbutton">
             <i class="fas fa-sign-out-alt nav-link"></i>
           </button>

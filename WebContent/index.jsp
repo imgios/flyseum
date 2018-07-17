@@ -13,7 +13,7 @@
     <%@include file="./parts/navbar.jsp"%>
     <div class="container-fluid mainbox py-5 bg-light text-light text-center">
       <div class="w-50 p-3 mx-auto">
-        <form action="searchFlight" method="get">
+        <form action="ServletResearchDest" method="get">
           <div class="form-group custom-control custom-radio custom-control-inline">
             <input type="radio" id="arRadio" value="ar" name="flightType" class="custom-control-input">
             <label class="custom-control-label" for="arRadio">Andata e ritorno</label>
