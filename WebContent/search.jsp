@@ -12,6 +12,7 @@
     <%@include file="./parts/navbar.jsp"%>
     <div class="container-fluid bg-light py-5">
       <% ArrayList<ProductBean> flights = (ArrayList<ProductBean>) request.getAttribute("flightList");%>
+      <%-- ArrayList<ProductBean> flights2 = (ArrayList<ProductBean>) request.getAttribute("flightList2");--%>
       <div class="row">
         <div class="col-8">
           <div class="container-fluid bg-primary text-white py-3">Andata</div>
@@ -23,7 +24,7 @@
                 <th scope="col">Destinazione</th>
                 <th scope="col">Data partenza</th>
                 <th scope="col">Data arrivo</th>
-                <th scope="col">Posti liberi</th>
+                <th scope="col">Posti</th>
                 <th scope="col">Prezzo</th>
                 <th scope="col">&nbsp;</th>
               </tr>
@@ -39,7 +40,7 @@
                   out.print("<td>"+f.getDataArrivo().toString()+"</td>");
                   out.print("<td>"+f.getPosti()+"</td>");
                   out.print("<td>"+f.getPrezzo()+"</td>");
-                  out.print("<button type=\"button\" class=\"btn btn-success\" id=\"flight-"+f.getId()+"\">Seleziona</button>");
+                  out.print("<td><button type=\"button\" class=\"btn btn-success\" id=\"flight-"+f.getId()+"\">Seleziona</button></td>");
                   out.print("</tr>");
                 }
                }%>
@@ -61,38 +62,25 @@
                 <th scope="col">Destinazione</th>
                 <th scope="col">Data partenza</th>
                 <th scope="col">Data arrivo</th>
-                <th scope="col">Posti liberi</th>
+                <th scope="col">Posti</th>
                 <th scope="col">&nbsp;</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>AirNull</td>
-                <td>Null land</td>
-                <td>00-00-0000 00:00</td>
-                <td>00-00-0000 00:00</td>
-                <td>200</td>
-                <td><button type="button" class="btn btn-success">Seleziona</button></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>AirNull</td>
-                <td>Null land</td>
-                <td>00-00-0000 00:00</td>
-                <td>00-00-0000 00:00</td>
-                <td>200</td>
-                <td><button type="button" class="btn btn-success">Seleziona</button></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>AirNull</td>
-                <td>Null land</td>
-                <td>00-00-0000 00:00</td>
-                <td>00-00-0000 00:00</td>
-                <td>200</td>
-                <td><button type="button" class="btn btn-success">Seleziona</button></td>
-              </tr>
+              <%-- if (!flights2.isEmpty()) {
+                for (ProductBean f : flights2) {
+                  out.print("<tr>");
+                  out.print("<th scope=\"row\">"+f.getId()+"</th>");
+                  out.print("<td>"+f.getCompagniaAerea()+"</td>");
+                  out.print("<td>"+f.getDestinazione()+"</td>");
+                  out.print("<td>"+f.getDataPartenza().toString()+"</td>");
+                  out.print("<td>"+f.getDataArrivo().toString()+"</td>");
+                  out.print("<td>"+f.getPosti()+"</td>");
+                  out.print("<td>"+f.getPrezzo()+"</td>");
+                  out.print("<td><button type=\"button\" class=\"btn btn-success\" id=\"flight-"+f.getId()+"\">Seleziona</button></td>");
+                  out.print("</tr>");
+                }
+               }--%>
             </tbody>
           </table>
           </div>
