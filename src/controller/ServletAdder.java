@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,32 +33,37 @@ public class ServletAdder extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String dest = request.getParameter("destination");
-		String depart = request.getParameter("departure");
-		String ID = request.getParameter("id");
-		String company = request.getParameter("compagnia");
-		float prezzo = Float.parseFloat(request.getParameter("prezzo"));
-		String date = request.getParameter("data");
+		String dest = request.getParameter("newArrival");
+		String depart = request.getParameter("newDeparture");
+		String company = request.getParameter("newCompany");
+		Float prezzo = Float.parseFloat(request.getParameter("newPrice"));
+		Timestamp dateDeparture = Timestamp.valueOf(request.getParameter("newDateDep")+" "+request.getParameter("newTimeDep")+":00");
+		Timestamp dateArrival = Timestamp.valueOf(request.getParameter("newDateArr")+" "+request.getParameter("newTimeArr")+":00");
+		Integer posti = Integer.parseInt(request.getParameter("newMax"));
 		
 		try {
 			ProductBeanDAO pbDAO = new ProductBeanDAO();
-			ProductBean pb = pbDAO.newProduct(dest, depart, ID, company, prezzo, date);
+			ProductBean pb = pbDAO.newProduct(dest, depart, company, prezzo, dateDeparture, dateArrival);
 			
 			if(pb != null) {
-				request.setAttribute("failed", false);
-				RequestDispatcher rd = request.getRequestDispatcher("./AddProduct.jsp");
-				rd.forward(request, response);
+				//request.setAttribute("failed", false);
+				//RequestDispatcher rd = request.getRequestDispatcher("./AddProduct.jsp");
+				//rd.forward(request, response);
+				//response.sendRedirect("./infopages/success.jsp");
+				response.setStatus(201);
 			}
 			else {
-				request.setAttribute("failed", true);
-				RequestDispatcher rq = request.getRequestDispatcher("./AddProduct.jsp");
-				rq.forward(request, response);
+				//request.setAttribute("failed", true);
+				//RequestDispatcher rq = request.getRequestDispatcher("./AddProduct.jsp");
+				//rq.forward(request, response);
+				//response.sendRedirect("./infopages/error.jsp");
+				response.setStatus(400);
 			}
 		}catch(Exception e) {
-			request.setAttribute("exception", true);
-			RequestDispatcher rq2 = request.getRequestDispatcher("./Exception.jsp");
-			rq2.forward(request, response);
+			//request.setAttribute("exception", e);
+			//RequestDispatcher rq2 = request.getRequestDispatcher("./infopages/error.jsp");
+			//rq2.forward(request, response);
+			response.setStatus(500);
 		}
 	}
 
