@@ -13,11 +13,11 @@
       <div class="row">
         <div class="col-sm my-5">
           <p class="h1 text-center text-warning"><i class="fas fa-paper-plane"></i></p>
-          <p class="text-justify px-5">orem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia pharetra purus, sed cursus sem gravida sit amet. Donec cursus est sed lacus commodo faucibus. Fusce accumsan risus sed sodales pharetra. Praesent tempor quis leo sit amet imperdiet. Sed elementum felis sit amet quam maximus, id venenatis diam vestibulum. Quisque efficitur, turpis eu malesuada lacinia, augue est fringilla est, a sollicitudin mi neque ac nunc. Quisque cursus volutpat maximus. Duis dapibus convallis ante quis ultrices. Sed in erat sem. Fusce leo diam, pharetra at aliquet at, pretium et ante. Nam tincidunt imperdiet augue, ac accumsan tortor tempor nec. Suspendisse vulputate et felis nec ornare. Suspendisse nisi eros, convallis sit amet sem id, consequat porta mauris.</p>
+          <p class="text-justify px-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia pharetra purus, sed cursus sem gravida sit amet. Donec cursus est sed lacus commodo faucibus. Fusce accumsan risus sed sodales pharetra. Praesent tempor quis leo sit amet imperdiet. Sed elementum felis sit amet quam maximus, id venenatis diam vestibulum. Quisque efficitur, turpis eu malesuada lacinia, augue est fringilla est, a sollicitudin mi neque ac nunc. Quisque cursus volutpat maximus. Duis dapibus convallis ante quis ultrices. Sed in erat sem. Fusce leo diam, pharetra at aliquet at, pretium et ante. Nam tincidunt imperdiet augue, ac accumsan tortor tempor nec. Suspendisse vulputate et felis nec ornare. Suspendisse nisi eros, convallis sit amet sem id, consequat porta mauris.</p>
         </div>
         <div class="col-sm">
           <p class="h4">Registrati a Flyseum</p>
-          <form action="ServletRegister" name="registerForm" method="post" novalidate>
+          <form action="register" name="registerForm" method="post" novalidate>
             <div class="form-group">
               <% if (duplicate != null) { %>
               <div class="alert alert-danger" role="alert">Email già esistente!</div>

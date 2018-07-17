@@ -16,7 +16,7 @@ import model.ProductBeanDAO;
 /**
  * Servlet implementation class ServletResearchDest
  */
-@WebServlet("/ServletResearchDest")
+@WebServlet("/search")
 public class ServletResearchDest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

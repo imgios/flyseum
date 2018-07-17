@@ -50,7 +50,7 @@ public class ServletAdder extends HttpServlet {
 				//RequestDispatcher rd = request.getRequestDispatcher("./AddProduct.jsp");
 				//rd.forward(request, response);
 				//response.sendRedirect("./infopages/success.jsp");
-				response.setStatus(201);
+				response.setStatus(200);
 			}
 			else {
 				//request.setAttribute("failed", true);

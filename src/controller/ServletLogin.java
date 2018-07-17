@@ -19,7 +19,7 @@ import model.UserBeanDAO;
 /**
  * Servlet implementation class ServletLogin
  */
-@WebServlet("/ServletLogin")
+@WebServlet("/login")
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

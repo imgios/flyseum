@@ -27,7 +27,7 @@
         <a class="nav-link" href="./profile.jsp">Bentornato, <%=user.getNome()%>!</a>
       </li>
       <li class="nav-item">
-        <form class="form-inline" action="ServletLogout" method="post">
+        <form class="form-inline" action="logout" method="post">
           <button type="submit" id="logout" class="logbutton">
             <i class="fas fa-sign-out-alt nav-link"></i>
           </button>
@@ -57,7 +57,8 @@
       	<% if (denied != null) { %>
         <div class="alert alert-danger" role="alert">I dati non sono corretti! Riprova.</div>
         <% } %>
-        <form action="ServletLogin" method="post" name="loginForm">
+        <p class="text-muted small">Testing: ospite@flyseum.org:ospite12</p>
+        <form action="login" method="post" name="loginForm">
           <div class="form-group">
             <label for="loginEmail">Indirizzo email</label>
             <input type="email" class="form-control" id="loginEmail" name="userEmail" aria-describedby="emailhHelp" placeholder="Email" required>

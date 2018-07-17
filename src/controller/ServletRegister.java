@@ -15,7 +15,7 @@ import model.UserBeanDAO;
 /**
  * Servlet implementation class ServletRegister
  */
-@WebServlet("/ServletRegister")
+@WebServlet("/register")
 public class ServletRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
