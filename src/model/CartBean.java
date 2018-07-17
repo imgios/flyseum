@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class CartBean {
 	
-	private String User;
-	private ArrayList<ProductBean> voli = new ArrayList<ProductBean> ();
+	private String user;
+	private ArrayList<ProductBean> voli = new ArrayList<ProductBean>();
 	
 	public CartBean ()
 	{
@@ -72,11 +72,11 @@ public class CartBean {
 	}
 	
 	public String getUser() {
-		return User;
+		return user;
 	}
 	
 	public void setUser(String uEmail) {
-		this.User = uEmail;
+		this.user = uEmail;
 	}
 	
 	public CartBean restoreCart (CartBean cart)

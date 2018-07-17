@@ -1,16 +1,17 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 
 public class ProductBean {
 	private String destinazione, partenza, compagniaAerea;
 	private Float prezzo;
-	private Date dataArrivo, dataPartenza;
+	private Timestamp dataArrivo, dataPartenza;
 	private Integer id, posti;
 	
 	//we will use this one when retrieving a new flight
-	public ProductBean (Integer id, String partenza, String destinazione, String compagnia, Float prezzo, Date dataPartenza, Date dataArrivo, Integer posti) {
+	public ProductBean (Integer id, String partenza, String destinazione, String compagnia, Float prezzo, Timestamp dataPartenza, Timestamp dataArrivo, Integer posti) {
 		this.destinazione = destinazione;
 		this.partenza = partenza;
 		this.id = id;
@@ -72,19 +73,19 @@ public class ProductBean {
 		this.prezzo = prezzo;
 	}
 
-	public Date getDataPartenza() {
+	public Timestamp getDataPartenza() {
 		return dataPartenza;
 	}
 
-	public void setDataPartenza(Date dataPartenza) {
+	public void setDataPartenza(Timestamp dataPartenza) {
 		this.dataPartenza = dataPartenza;
 	}
 
-	public Date getDataArrivo() {
+	public Timestamp getDataArrivo() {
 		return dataArrivo;
 	}
 
-	public void setDataArrivo(Date dataArrivo) {
+	public void setDataArrivo(Timestamp dataArrivo) {
 		this.dataArrivo = dataArrivo;
 	}
 

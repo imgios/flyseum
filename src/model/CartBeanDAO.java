@@ -11,14 +11,14 @@ public class CartBeanDAO {
 		try {
 			
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("INSERT INTO carrello (eMail_User, id_Volo) VALUES(?,?)");
+			ps = conn.prepareStatement("INSERT INTO cart (useremail, flightid) VALUES(?,?)");
 			ps.setString(1, ub.getEmail());
 			ps.setInt(2, pb.getId());
 			
 			int status = ps.executeUpdate();
 			
 			if(status != 0) {
-				System.out.println("carrello salvao con successo");
+				System.out.println("Carrello salvato con successo!");
 			}	
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -34,15 +34,15 @@ public class CartBeanDAO {
 		}
 	}
 	
-	public synchronized void  deleteFromCart(String uEmail, String IDFlight) {
+	public synchronized void  deleteFromCart(String uEmail, Integer IDFlight) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
 		try {
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("DELETE FROM carrello WHERE eMail_User = ? AND id_Volo = ?");
+			ps = conn.prepareStatement("DELETE FROM cart WHERE useremail = ? AND flightid = ?");
 			ps.setString(1, uEmail);
-			ps.setString(2, IDFlight);
+			ps.setInt(2, IDFlight);
 			
 			int status = ps.executeUpdate();
 			
@@ -68,13 +68,13 @@ public class CartBeanDAO {
 		
 		try {
 			conn = ConnectionPool.getConnection();
-			ps = conn.prepareStatement("SELECT * FROM carrello WHERE eMail_User = ?");
+			ps = conn.prepareStatement("SELECT * FROM cart WHERE useremail = ?");
 			ps.setString(1, uEmail);
 			
 			ResultSet res = ps.executeQuery();
 			CartBean cart = new CartBean();
 			
-			while( res.next() ) {
+			while(res.next()) {
 				ProductBeanDAO pbd = new ProductBeanDAO();
 				ProductBean pb = pbd.searchByID(res.getInt("id"));
 				cart.addProduct(pb);
@@ -99,6 +99,4 @@ public class CartBeanDAO {
 		
 		return null;
 	}
-	
-	
 }

@@ -41,14 +41,14 @@ public class ServletResearchDest extends HttpServlet {
 		
 		try {
 			ProductBeanDAO pbDAO= new ProductBeanDAO();
-			pbeans = pbDAO.serachBy(destination);
+			pbeans = pbDAO.searchByDestination(destination);
 			request.setAttribute("flightList", pbeans);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("./search.jsp");
 			rd.forward(request, response);
 		}catch(Exception e) {
-			request.setAttribute("exception", true);
-			RequestDispatcher rq2 = request.getRequestDispatcher("./Exception.jsp");
+			request.setAttribute("exception", e);
+			RequestDispatcher rq2 = request.getRequestDispatcher("./infopages/error.jsp");
 			rq2.forward(request, response);
 		}
 	}

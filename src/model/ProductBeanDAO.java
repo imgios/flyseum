@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class ProductBeanDAO {
 	public synchronized ProductBean newProduct(String destinazione, String partenza, String compagnia,
-			Float prezzo, Date dataPartenza, Date dataArrivo) {
+			Float prezzo, Timestamp dataPartenza, Timestamp dataArrivo) {
 
 		Connection conn = null;
 		PreparedStatement prepstat = null;
@@ -21,8 +21,10 @@ public class ProductBeanDAO {
 			prepstat.setString(1, partenza);
 			prepstat.setString(2, destinazione);
 			prepstat.setString(3, compagnia);
-			prepstat.setTimestamp(4, new java.sql.Timestamp(dataPartenza.getTime()));
-			prepstat.setTimestamp(5, new java.sql.Timestamp(dataArrivo.getTime()));
+			//prepstat.setTimestamp(4, new java.sql.Timestamp(dataPartenza.getTime()));
+			//prepstat.setTimestamp(5, new java.sql.Timestamp(dataArrivo.getTime()));
+			prepstat.setTimestamp(4, dataPartenza);
+			prepstat.setTimestamp(5, dataArrivo);
 			int state = prepstat.executeUpdate();
 
 			if (state != 0) {
@@ -35,7 +37,8 @@ public class ProductBeanDAO {
 					stat.setTimestamp(4, new java.sql.Timestamp(dataPartenza.getTime()));
 					stat.setTimestamp(5, new java.sql.Timestamp(dataArrivo.getTime()));
 					ResultSet rs = stat.executeQuery();
-					ProductBean pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"), rs.getInt("passengers"));
+					rs.next();
+					ProductBean pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getTimestamp("dateDeparture"), rs.getTimestamp("dateArrival"), rs.getInt("passengers"));
 					return pb;
 				} catch (SQLException ex) {
 					ex.printStackTrace();
@@ -57,7 +60,7 @@ public class ProductBeanDAO {
 		return null;
 	}
 	
-	public synchronized ArrayList <ProductBean> serachByDestination(String destinazione){
+	public synchronized ArrayList <ProductBean> searchByDestination(String destinazione){
 		
 		Connection conn = null;
 		PreparedStatement prepstat = null;
@@ -65,13 +68,13 @@ public class ProductBeanDAO {
 		
 		try {
 			conn = ConnectionPool.getConnection();
-			prepstat = conn.prepareStatement("SELECT * FROM flights WHERE destination LIKE ?;");
+			prepstat = conn.prepareStatement("SELECT * FROM flight WHERE destination LIKE ?;");
 			prepstat.setString(1, "%" + destinazione + "%");
 			
 			ResultSet rs = prepstat.executeQuery();
 			
 			while(rs.next()) {
-				ProductBean pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"), rs.getInt("passengers"));
+				ProductBean pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getTimestamp("dateDeparture"), rs.getTimestamp("dateArrival"), rs.getInt("passengers"));
 				search.add(pb);
 			}
 		}catch(SQLException e){
@@ -102,7 +105,7 @@ public class ProductBeanDAO {
 			ResultSet rs = prepstat.executeQuery();
 			
 			while(rs.next()) {
-				pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getDate("dateDeparture"), rs.getDate("dateArrival"), rs.getInt("passengers"));
+				pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getTimestamp("dateDeparture"), rs.getTimestamp("dateArrival"), rs.getInt("passengers"));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
