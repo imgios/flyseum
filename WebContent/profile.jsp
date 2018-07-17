@@ -12,24 +12,25 @@
     <div class="container-fluid bg-light text-dark py-5">
     <% if (user != null) { %>
       <div class="row">
-        <div class="col-2">
+        <div class="col-sm-3">
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Dashboard</a>
             <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profilo</a>
             <a class="list-group-item list-group-item-action" id="list-orders-list" data-toggle="list" href="#list-orders" role="tab" aria-controls="orders">Prenotazioni</a>
             <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Impostazioni</a>
             <% if ("admin".equals(user.getRole())) {%>
-            <a class="list-group-item list-group-item-action" id="list-admin-list" data-toggle="list" href="#list-admin" role="tab" aria-controls="settings">Amministrazione</a>
+            <a class="list-group-item disabled bg-info" id="list-admin-list" data-toggle="list"role="tab">Amministrazione</a>
+            <a class="list-group-item list-group-item-action" id="list-admin-list" data-toggle="list" href="#list-admin" role="tab" aria-controls="settings">Aggiungi volo</a>
             <% } %>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-sm-9">
           <div class="tab-content" id="nav-tabContent">
             <!-- dashboard -->
             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
               <p class="h3">Bentornato, <%=user.getNome()%>! <span class="text-muted small">È un buon periodo per prenotare voli, non pensi? <i class="em em-sunglasses small"></i></span></p>
-              <p class="my-0">Hai effettuato <span id="userOrders">(null)</span> prenotazioni con noi, accumulando così <span id="userPoints">(null)</span> punti!</p>
-              <p class="text-muted small">Ti mancano altri <span id="pointsLeft">(null)</span> punti per ricevere un bonus! <i class="em em-tada"></i></p>
+              <p class="my-0">Hai effettuato <span id="userOrders">(null)</span> prenotazioni con noi!</p>
+              <p class="text-muted small"><span id="pointsLeft">(null)</span>! <i class="em em-tada"></i></p>
               <p class="my-2"><i class="em em-ticket"></i> Ecco la tua prossima prenotazione:</p>
               <dl id="nextFlight">
                 <dt>Destinazione</dt>
@@ -60,7 +61,11 @@
             <!-- end settings -->
             <% if ("admin".equals(user.getRole())) {%>
             <!-- start admin -->
-            <div class="tab-pane fade" id="list-admin" role="tabpanel" aria-labelledby="list-admin-list">work in progress</div>
+            <div class="tab-pane fade" id="list-admin" role="tabpanel" aria-labelledby="list-admin-list">
+            	<!-- addflight form -->
+            	<%@ include file="./parts/addflight.jsp" %>
+            	<!-- end addflight form -->
+            </div>
             <!-- end admin -->
             <% } %>
           </div>
