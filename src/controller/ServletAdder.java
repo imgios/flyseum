@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
@@ -16,7 +17,7 @@ import model.ProductBeanDAO;
 /**
  * Servlet implementation class ServletAdder
  */
-@WebServlet("/ServletAdder")
+@WebServlet("/ServletAdder/*")
 public class ServletAdder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,17 +47,9 @@ public class ServletAdder extends HttpServlet {
 			ProductBean pb = pbDAO.newProduct(dest, depart, company, prezzo, dateDeparture, dateArrival);
 			
 			if(pb != null) {
-				//request.setAttribute("failed", false);
-				//RequestDispatcher rd = request.getRequestDispatcher("./AddProduct.jsp");
-				//rd.forward(request, response);
-				//response.sendRedirect("./infopages/success.jsp");
 				response.setStatus(200);
 			}
 			else {
-				//request.setAttribute("failed", true);
-				//RequestDispatcher rq = request.getRequestDispatcher("./AddProduct.jsp");
-				//rq.forward(request, response);
-				//response.sendRedirect("./infopages/error.jsp");
 				response.setStatus(400);
 			}
 		}catch(Exception e) {

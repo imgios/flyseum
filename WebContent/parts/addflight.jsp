@@ -1,7 +1,7 @@
 <div class="alert" id="addMessage" role="alert" hidden>
 </div>
 <p class="h3"><i class="fas fa-plane"></i> Aggiungi un nuovo volo</p>
-      	<form action="ServletAdder" method="post" id="addFlightForm">
+      	<form action="#" method="post" id="addFlightForm">
       		<div class="form-row">
      				<div class="col-md-6 form-group">
         		<label for="departureInput">Partenza da:</label>
