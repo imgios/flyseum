@@ -1,4 +1,4 @@
-<div class="alert" id="addMessage" role="alert" hidden>
+<div class="alert" id="addMessage" role="alert">
 </div>
 <p class="h3"><i class="fas fa-plane"></i> Aggiungi un nuovo volo</p>
       	<form action="#" method="post" id="addFlightForm">
