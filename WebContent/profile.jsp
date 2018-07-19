@@ -30,7 +30,7 @@
             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
               <p class="h3">Bentornato, <%=user.getNome()%>! <span class="text-muted small">È un buon periodo per prenotare voli, non pensi? <i class="em em-sunglasses small"></i></span></p>
               <p class="my-0">Hai effettuato <span id="userOrders">(null)</span> prenotazioni con noi!</p>
-              <p class="text-muted small"><span id="pointsLeft">(null)</span>! <i class="em em-tada"></i></p>
+              <br/>
               <p class="my-2"><i class="em em-ticket"></i> Ecco la tua prossima prenotazione:</p>
               <dl id="nextFlight">
                 <dt>Destinazione</dt>

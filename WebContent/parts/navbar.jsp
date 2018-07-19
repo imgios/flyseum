@@ -5,6 +5,8 @@
   "refreshCallbackUrl": "./"}'></span>
 <!-- validation script -->
 <script src="./js/user-form-validate.js"></script>
+<!-- utilities -->
+<script src="./js/utilities.js"></script>
 <!-- start navbar -->
 <%@ include file="./cookie.jsp" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
