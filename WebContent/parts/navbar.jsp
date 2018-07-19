@@ -70,12 +70,6 @@
             <small id="pswHelp" class="form-text text-muted">Inserisci la password utilizzata al momento della registrazione.</small>
           </div>
           <div class="row">
-            <div class="col-sm">
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="rememberCheck">
-                <label for="rememberCheck" class="form-check-label">Ricordami</label>
-              </div>
-            </div>
             <div class="col-sm text-right">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Chiudi</button>
               <button type="submit" onclick="return validate(this.form)" class="btn btn-success">Login</button>
