@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class CartBeanDAO {
 	
-	public synchronized void saveCart(UserBean ub, ProductBean pb) {
+	public synchronized void saveCart(CartBean cb, ProductBean pb) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
@@ -12,7 +12,7 @@ public class CartBeanDAO {
 			
 			conn = ConnectionPool.getConnection();
 			ps = conn.prepareStatement("INSERT INTO cart (useremail, flightid) VALUES(?,?)");
-			ps.setString(1, ub.getEmail());
+			ps.setString(1, cb.getUser());
 			ps.setInt(2, pb.getId());
 			
 			int status = ps.executeUpdate();
