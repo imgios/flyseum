@@ -101,7 +101,7 @@ public class ProductBeanDAO {
 		
 		try {
 			conn = ConnectionPool.getConnection();
-			prepstat = conn.prepareStatement("SELECT * FROM flights WHERE id = ?;");
+			prepstat = conn.prepareStatement("SELECT * FROM flight WHERE id = ?;");
 			prepstat.setInt(1, id);
 			
 			ResultSet rs = prepstat.executeQuery();

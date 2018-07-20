@@ -80,7 +80,7 @@ public class CartBeanDAO {
 				cart.addProduct(pb);
 			}
 			
-			if(cart.getTotal()!=0) {
+			if(!cart.isEmpty()) {
 				cart.setUser(uEmail);
 			}
 			

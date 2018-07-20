@@ -7,7 +7,6 @@
     <title>Flyseum</title>
     <!-- various index js -->
     <script src="./js/flighttype.js"></script> <!-- flight type switch -->
-    <script src="./js/slider.js"></script> <!-- suggested destination slider -->
   </head>
   <body>
     <%@include file="./parts/navbar.jsp"%>

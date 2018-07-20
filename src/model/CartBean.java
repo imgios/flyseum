@@ -9,14 +9,14 @@ public class CartBean {
 	
 	public CartBean ()
 	{
-		this.voli = new ArrayList<ProductBean> ();
+		this.voli = new ArrayList<ProductBean>();
     }
 	
 	public float getTotal(){
 		
 		float tot = 0;
 		
-		for(ProductBean beans : this.voli) {
+		for(ProductBean beans : voli) {
 			tot += beans.getPrezzo();
 		}
 		
@@ -30,18 +30,7 @@ public class CartBean {
 	}
 	
 	public void removeProduct(ProductBean pb){
-		
-		int i = 0;
-		
-		for(ProductBean temp : this.voli) {
-			
-			if(temp.getId().equals(pb.getId())) {
-				
-				i = this.voli.indexOf(temp);
-				this.voli.remove(i);
-			
-			}
-		}
+		voli.remove(pb);
 	}
 	
 	public ProductBean getProduct(int i) {
@@ -62,7 +51,7 @@ public class CartBean {
 		}
 	}
 	
-	public void DeleteCart() {
+	public void deleteCart() {
 		int i = 0;
 		
 		while(!(this.voli.isEmpty())) {
@@ -88,5 +77,10 @@ public class CartBean {
 	public void saveCart (CartBean cart, ProductBean pb) {
 		CartBeanDAO cbd = new CartBeanDAO();
 		cbd.saveCart(cart, pb);
+	}
+	
+	public void removeFlightDB (ProductBean pb) {
+		CartBeanDAO cbd = new CartBeanDAO();
+		cbd.deleteFromCart(this.getUser(), pb.getId());
 	}
 }

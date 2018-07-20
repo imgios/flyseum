@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.CartBean;
+import model.CartBeanDAO;
 //import model.CartBean;
 //import model.CartBeanDAO;
 import model.UserBean;
@@ -43,13 +45,13 @@ public class ServletLogin extends HttpServlet {
 		
 		try {	
 			UserBeanDAO beanUserD = new UserBeanDAO();
-			/*CartBean cartUser = new CartBean();
-			CartBeanDAO cartUserDAO = new CartBeanDAO();*/
+			CartBean cartUser = new CartBean();
+			CartBeanDAO cartUserDAO = new CartBeanDAO();
 			
-			/*cartUser = cartUserDAO.restore(email);
+			cartUser = cartUserDAO.restore(email);
 			if(cartUser.isEmpty()) {
 				cartUser = new CartBean();
-			}*/
+			}
 			
 			beanUser = beanUserD.doRetrieveByKey(email, pwd);
 			if(beanUser == null) {
@@ -58,8 +60,9 @@ public class ServletLogin extends HttpServlet {
 				rq.forward(request, response);
 			}
 			else {
+				cartUser.setUser(email);
 				session.setAttribute("UserBean", beanUser);
-				//session.setAttribute("cart", cartUser);
+				session.setAttribute("cart", cartUser);
 				RequestDispatcher rq = request.getRequestDispatcher("./infopages/success.jsp");
 				rq.forward(request, response);
 			}

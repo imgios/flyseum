@@ -10,7 +10,7 @@
   <body class="bg-light">
   	<%@include file="../parts/navbar.jsp" %>
   	<div class="container">
-	    <div class="card w-50 text-white bg-damage my-5 mx-auto">
+	    <div class="card w-50 text-white bg-danger my-5 mx-auto">
 		  <div class="card-header">
 		    <span class="small"><i class="fas fa-exclamation-circle"></i></span> Errore
 		  </div>

@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.CartBean;
-import model.CartBeanDAO;
 import model.ProductBean;
 import model.ProductBeanDAO;
 
 /**
- * Servlet implementation class SelectFlight
+ * Servlet implementation class RemoveSelectedFlight
  */
-@WebServlet("/selectFlight")
-public class SelectFlight extends HttpServlet {
+@WebServlet("/RemoveSelectedFlight")
+public class RemoveSelectedFlight extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectFlight() {
+    public RemoveSelectedFlight() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,17 +33,15 @@ public class SelectFlight extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		
-		Integer flightId = Integer.parseInt(request.getParameter("flightId"));
 		CartBean userCart = (CartBean) session.getAttribute("cart");
-		if (userCart == null) {
-			userCart = new CartBean();
-		}
-		ProductBeanDAO flightDAO = new ProductBeanDAO();
-		ProductBean flightBean = flightDAO.searchByID(flightId);
-		userCart.addProduct(flightBean);
+		Integer flightId = Integer.parseInt(request.getParameter("flightId"));
+		System.out.println(flightId);
+		
+		ProductBeanDAO flightBeanDAO = new ProductBeanDAO();
+		ProductBean flightBean = flightBeanDAO.searchByID(flightId);
 		if (!userCart.isEmpty()) {
-			userCart.saveCart(userCart, flightBean);
+			userCart.removeProduct(flightBean);
+			userCart.removeFlightDB(flightBean);
 		}
 		session.removeAttribute("cart");
 		session.setAttribute("cart", userCart);
