@@ -14,8 +14,8 @@ function selectFlight(id, tablename) {
 	    	  } else {
 	    		  var plane = '<i class="fas fa-plane-arrival"></i>';
 	    	  }
-	    	  var flightHeader = '<div class="row" id="selected-'+id+'"><p class="small">'+plane+' '+$("#destination-"+id).text()+'<span class="text-right">&euro;'+$("#price-"+id).text()+'</span></p>';
-	    	  var flightBody = '<p class="small"><span class="font-weight-bold">Partenza:</span> '+$("#dateDep-"+id).text()+'<br/><span class="font-weight-bold">Arrivo:</span> '+$("#dateArr-"+id).text()+'</p>';
+	    	  var flightHeader = '<div class="row" id="selected-'+id+'"><p>'+plane+' '+$("#destination-"+id).text()+'<span class="text-right">&euro;'+$("#price-"+id).text()+'</span></p>';
+	    	  var flightBody = '<p><span class="font-weight-bold">Partenza:</span> '+$("#dateDep-"+id).text()+'<br/><span class="font-weight-bold">Arrivo:</span> '+$("#dateArr-"+id).text()+'</p>';
 	    	  var flightFooter = '<button type="button" class="btn btn-danger btn-sm btn-block" onclick="removeFlight(\''+id+'\', \''+tablename+'\')">Rimuovi</button></div>';
 	    	  $("#userFlights").append(flightHeader+flightBody+flightFooter);
 	   })

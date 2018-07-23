@@ -17,8 +17,8 @@
       </div>
       <div class="row">
         <div class="col-sm-8">
-          <div class="container-fluid bg-primary text-white py-3">Andata</div>
-          	<table class="table table-responsive table-hover" id="goTable">
+          <div class="container-fluid table-responsive bg-primary text-white py-3">Andata</div>
+          	<table class="table table-hover" id="goTable">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">ID</th>
@@ -57,9 +57,9 @@
       </div>
        <% if (!onlygo) { %>
 		<div class="row">
-       		<div class="col-sm-8">
+       		<div class="col-sm-8 table-responsive">
        			<div class="container-fluid bg-primary text-white py-3">Ritorno</div>
-	          		<table class="table table-responsive table-hover" id="backTable">
+	          		<table class="table table-hover" id="backTable">
 		            	<thead class="thead-dark">
 			              	<tr>
 			                	<th scope="col">ID</th>
