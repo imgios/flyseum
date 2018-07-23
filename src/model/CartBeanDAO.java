@@ -47,7 +47,7 @@ public class CartBeanDAO {
 			int status = ps.executeUpdate();
 			
 			if(status != 0) {
-				System.out.println("elemento eliminato con successo");
+				System.out.println("Elemento eliminato con successo");
 			}
 		}
 		catch(SQLException e) {
@@ -76,7 +76,7 @@ public class CartBeanDAO {
 			
 			while(res.next()) {
 				ProductBeanDAO pbd = new ProductBeanDAO();
-				ProductBean pb = pbd.searchByID(res.getInt("id"));
+				ProductBean pb = pbd.searchByID(res.getInt("flightid"));
 				cart.addProduct(pb);
 			}
 			

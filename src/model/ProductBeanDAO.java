@@ -2,7 +2,6 @@ package model;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ProductBeanDAO {
 	public synchronized ProductBean newProduct(String destinazione, String partenza, String compagnia,
@@ -101,10 +100,22 @@ public class ProductBeanDAO {
 		
 		try {
 			conn = ConnectionPool.getConnection();
-			prepstat = conn.prepareStatement("SELECT * FROM flight WHERE id = ?;");
+			prepstat = conn.prepareStatement("SELECT * FROM flight WHERE id = ?");
 			prepstat.setInt(1, id);
 			
 			ResultSet rs = prepstat.executeQuery();
+			
+			//testing
+			/*ResultSetMetaData rsmd = rs.getMetaData();
+			int columnsNumber = rsmd.getColumnCount();
+			while (rs.next()) {
+			    for (int i = 1; i <= columnsNumber; i++) {
+			        if (i > 1) System.out.print(",  ");
+			        String columnValue = rs.getString(i);
+			        System.out.print(columnValue + " " + rsmd.getColumnName(i));
+			    }
+			    System.out.println("");
+			}*/
 			
 			while(rs.next()) {
 				pb = new ProductBean(rs.getInt("id"), rs.getString("departure"), rs.getString("destination"), rs.getString("company"), rs.getFloat("price"), rs.getTimestamp("dateDeparture"), rs.getTimestamp("dateArrival"), rs.getInt("passengers"));

@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class CartBean {
 	
 	private String user;
-	private ArrayList<ProductBean> voli = new ArrayList<ProductBean>();
+	private ArrayList<ProductBean> voli;
 	
 	public CartBean ()
 	{
+		user = "";
 		this.voli = new ArrayList<ProductBean>();
     }
 	
@@ -16,17 +17,19 @@ public class CartBean {
 		
 		float tot = 0;
 		
-		for(ProductBean beans : voli) {
-			tot += beans.getPrezzo();
+		if (!voli.isEmpty()) {
+			for(ProductBean beans : voli) {
+				tot += beans.getPrezzo();
+			}
 		}
 		
 		return tot;
 	}
 	
 	public void addProduct(ProductBean pb) {
-		this.voli.add(pb);
-		
-		System.out.println("Elemento aggiunto con successo!");
+		if(voli.add(pb)) {
+			System.out.println("Elemento aggiunto con successo!");
+		}
 	}
 	
 	public void removeProduct(ProductBean pb){
@@ -38,12 +41,11 @@ public class CartBean {
 	}
 	
 	public ArrayList<ProductBean> getAllProduct(){
-		return this.voli;
+		return voli;
 	}
 	
 	public boolean isEmpty() {
-		
-		if(this.voli.isEmpty()) {
+		if(voli.isEmpty()) {
 			return true;
 		}
 		else {
@@ -68,10 +70,10 @@ public class CartBean {
 		this.user = uEmail;
 	}
 	
-	public CartBean restoreCart (CartBean cart)
+	public CartBean restoreCart()
 	{
 		CartBeanDAO cbd = new CartBeanDAO();
-		return cart = cbd.restore(cart.getUser());
+		return cbd.restore(this.getUser());
 	}
 	
 	public void saveCart (CartBean cart, ProductBean pb) {
