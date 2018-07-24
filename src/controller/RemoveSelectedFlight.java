@@ -35,6 +35,7 @@ public class RemoveSelectedFlight extends HttpServlet {
 		HttpSession session = request.getSession();
 		CartBean userCart = (CartBean) session.getAttribute("cart");
 		Integer flightId = Integer.parseInt(request.getParameter("flightId"));
+		String type = request.getParameter("type");
 		System.out.println(flightId);
 		
 		ProductBeanDAO flightBeanDAO = new ProductBeanDAO();
@@ -45,6 +46,10 @@ public class RemoveSelectedFlight extends HttpServlet {
 		}
 		session.removeAttribute("cart");
 		session.setAttribute("cart", userCart);
+		
+		if (type.equals("get")) {
+			response.sendRedirect("./booking.jsp");
+		}
 	}
 
 	/**

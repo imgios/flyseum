@@ -2,7 +2,7 @@
   <div class="container-fluid py-5 bg-dark text-light">
     <div class="row">
       <div class="col-sm text-center">
-        <img src="./images/logo.png" class="rounded-circle" alt="Flyseum">
+        <img src="./images/logo.png" class="rounded-circle img-fluid" alt="Flyseum">
       </div>
       <div class="col-sm">
         <div class="iframe-container">

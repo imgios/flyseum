@@ -17,8 +17,8 @@
       </div>
       <div class="row">
         <div class="col-sm-8">
-          <div class="container-fluid table-responsive bg-primary text-white py-3">Andata</div>
-          	<table class="table table-hover" id="goTable">
+          <div class="container-fluid bg-primary text-white py-3">Andata</div>
+          	<div class="table-responsive"><table class="table table-hover" id="goTable">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">ID</th>
@@ -37,19 +37,19 @@
                   if (f.getPartenza().equals("roma")) {
                 	  out.print("<tr>");
                 	  out.print("<th scope=\"row\" id=\"id-"+f.getId()+"\">"+f.getId()+"</th>");
-                      out.print("<td id=\"company-"+f.getId()+"\">"+f.getCompagniaAerea()+"</td>");
-                      out.print("<td id=\"destination-"+f.getId()+"\">"+f.getDestinazione()+"</td>");
-                      out.print("<td id=\"dateDep-"+f.getId()+"\">"+f.getDataPartenza().toString()+"</td>");
-                      out.print("<td id=\"dateArr-"+f.getId()+"\">"+f.getDataArrivo().toString()+"</td>");
+                      out.print("<td class=\"text-capitalize\" id=\"company-"+f.getId()+"\">"+f.getCompagniaAerea()+"</td>");
+                      out.print("<td class=\"text-capitalize\" id=\"destination-"+f.getId()+"\">"+f.getDestinazione()+"</td>");
+                      out.print("<td id=\"dateDep-"+f.getId()+"\">"+f.getDataPartenza().toString().split("\\.")[0]+"</td>");
+                      out.print("<td id=\"dateArr-"+f.getId()+"\">"+f.getDataArrivo().toString().split("\\.")[0]+"</td>");
                       out.print("<td>"+f.getPosti()+"</td>");
-                      out.print("<td id=\"price-"+f.getId()+"\">"+f.getPrezzo()+"</td>");
+                      out.print("<td id=\"price-"+f.getId()+"\">&euro; "+f.getPrezzo()+"</td>");
                       out.print("<td><button type=\"button\" class=\"btn btn-success\" id=\"flight-"+f.getId()+"\" onclick=\"selectFlight("+f.getId()+", 'goTable')\">Seleziona</button></td>");
                       out.print("</tr>");
                   }
                 }
                }%>
             </tbody>
-          </table>
+          </table></div>
         </div>
         <div class="col-sm-4" id="userFlights">
         	<div class="container-fluid bg-success text-white py-3">Prenotazione</div>
@@ -57,39 +57,41 @@
       </div>
        <% if (!onlygo) { %>
 		<div class="row">
-       		<div class="col-sm-8 table-responsive">
+       		<div class="col-sm-8">
        			<div class="container-fluid bg-primary text-white py-3">Ritorno</div>
-	          		<table class="table table-hover" id="backTable">
-		            	<thead class="thead-dark">
-			              	<tr>
-			                	<th scope="col">ID</th>
-			                	<th scope="col">Compagnia</th>
-			                	<th scope="col">Destinazione</th>
-			                	<th scope="col">Data partenza</th>
-			                	<th scope="col">Data arrivo</th>
-			                	<th scope="col">Posti</th>
-			                	<th scope="col">&nbsp;</th>
-			              	</tr>
-		            	</thead>
-		            	<tbody>
-			            	<%if (!flights.isEmpty()) {
-				                for (ProductBean f : flights) {
-				                  if (f.getDestinazione().equals("roma")) {
-				                	  out.print("<tr>");
-				                      out.print("<th scope=\"row\" id=\"id-"+f.getId()+"\">"+f.getId()+"</th>");
-				                      out.print("<td id=\"company-"+f.getId()+"\">"+f.getCompagniaAerea()+"</td>");
-				                      out.print("<td id=\"destination-"+f.getId()+"\">"+f.getDestinazione()+"</td>");
-				                      out.print("<td id=\"dateDep-"+f.getId()+"\">"+f.getDataPartenza().toString()+"</td>");
-				                      out.print("<td id=\"dateArr-"+f.getId()+"\">"+f.getDataArrivo().toString()+"</td>");
-				                      out.print("<td>"+f.getPosti()+"</td>");
-				                      out.print("<td id=\"price-"+f.getId()+"\">"+f.getPrezzo()+"</td>");
-				                      out.print("<td><button type=\"button\" class=\"btn btn-success\" id=\"flight-"+f.getId()+"\" onclick=\"selectFlight("+f.getId()+", 'backTable')\">Seleziona</button></td>");
-				                      out.print("</tr>");
-				                  }
-				                }
-				               }%>
-		            	</tbody>
-	          	</table>
+	          		<div class="table-responsive">
+		          		<table class="table table-hover" id="backTable">
+			            	<thead class="thead-dark">
+				              	<tr>
+				                	<th scope="col">ID</th>
+				                	<th scope="col">Compagnia</th>
+				                	<th scope="col">Destinazione</th>
+				                	<th scope="col">Data partenza</th>
+				                	<th scope="col">Data arrivo</th>
+				                	<th scope="col">Posti</th>
+				                	<th scope="col">&nbsp;</th>
+				              	</tr>
+			            	</thead>
+			            	<tbody>
+				            	<%if (!flights.isEmpty()) {
+					                for (ProductBean f : flights) {
+					                  if (f.getDestinazione().equals("roma")) {
+					                	  out.print("<tr>");
+					                      out.print("<th scope=\"row\" id=\"id-"+f.getId()+"\">"+f.getId()+"</th>");
+					                      out.print("<td id=\"company-"+f.getId()+"\">"+f.getCompagniaAerea()+"</td>");
+					                      out.print("<td id=\"destination-"+f.getId()+"\">"+f.getDestinazione()+"</td>");
+					                      out.print("<td id=\"dateDep-"+f.getId()+"\">"+f.getDataPartenza().toString()+"</td>");
+					                      out.print("<td id=\"dateArr-"+f.getId()+"\">"+f.getDataArrivo().toString()+"</td>");
+					                      out.print("<td>"+f.getPosti()+"</td>");
+					                      out.print("<td id=\"price-"+f.getId()+"\">"+f.getPrezzo()+"</td>");
+					                      out.print("<td><button type=\"button\" class=\"btn btn-success\" id=\"flight-"+f.getId()+"\" onclick=\"selectFlight("+f.getId()+", 'backTable')\">Seleziona</button></td>");
+					                      out.print("</tr>");
+					                  }
+					                }
+					               }%>
+			            	</tbody>
+		          	</table>
+				</div>
           	</div>
        	</div>
        <% } %>

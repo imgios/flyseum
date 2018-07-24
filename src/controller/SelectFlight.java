@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.CartBean;
-import model.CartBeanDAO;
 import model.ProductBean;
 import model.ProductBeanDAO;
 
@@ -43,7 +42,7 @@ public class SelectFlight extends HttpServlet {
 		ProductBeanDAO flightDAO = new ProductBeanDAO();
 		ProductBean flightBean = flightDAO.searchByID(flightId);
 		userCart.addProduct(flightBean);
-		if (!userCart.isEmpty()) {
+		if (!userCart.isEmpty() && !userCart.getUser().equals("")) {
 			userCart.saveCart(userCart, flightBean);
 		}
 		session.removeAttribute("cart");

@@ -1,5 +1,5 @@
 function randomDestination() {
-	var destination = ["amsterdam", "cracovia", "parigi", "dortmund"];
+	var destination = ["amsterdam", "cracovia", "parigi", "dortmund", "dortmund", "mosca", "berlino", "praga", "copenaghen"];
   for (i = 1; i < destination.length + 1; i++) {
     var random = destination[Math.floor(Math.random() * destination.length)];
     document.getElementById("cardtitle"+i).innerHTML = random;

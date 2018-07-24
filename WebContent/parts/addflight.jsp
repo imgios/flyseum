@@ -51,6 +51,6 @@
       				<input type="number" class="form-control" name="newPrice" id="priceInput" min="0" step="0.01">
       			</div>
       		</div>
-      		<p class="text-right"><button type="submit" class="btn btn-primary" id="submitFlight">Aggiungi volo</button></p>
+      		<p class="text-right"><button type="submit" class="btn btn-primary" id="submitFlight" onclick="return adminForm(this.form)">Aggiungi volo</button></p>
       	</form>
 <script src="./js/adminutil.js"></script>

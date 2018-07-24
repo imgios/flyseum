@@ -5,20 +5,20 @@
     <%@include file="./parts/meta.jsp"%>
     <%@include file="./parts/head.jsp"%>
     <title>Flyseum</title>
-    <!-- various index js -->
-    <script src="./js/flighttype.js"></script> <!-- flight type switch -->
+    <!-- various index js 
+    <script src="./js/flighttype.js"></script> -->
   </head>
   <body>
     <%@include file="./parts/navbar.jsp"%>
     <div class="container-fluid mainbox py-5 bg-light text-light text-center">
       <div class="w-50 p-3 mx-auto">
         <form action="search" method="get">
-          <div class="form-group custom-control custom-radio custom-control-inline">
+          <!-- <div class="form-group custom-control custom-radio custom-control-inline">
             <input type="radio" id="arRadio" value="ar" name="flightType" class="custom-control-input">
             <label class="custom-control-label" for="arRadio">Andata e ritorno</label>
-          </div>
+          </div> -->
           <div class="form-group custom-control custom-radio custom-control-inline">
-            <input type="radio" id="aoRadio" value="ao" name="flightType" class="custom-control-input">
+            <input type="radio" id="aoRadio" value="ao" name="flightType" class="custom-control-input" checked>
             <label class="custom-control-label" for="aoRadio">Solo andata</label>
           </div>
           <div class="form-group">
@@ -29,12 +29,17 @@
                   <option value="cracovia">Cracovia</option>
                   <option value="parigi">Parigi</option>
                   <option value="dortmund">Dortmund</option>
+                  <option value="lussemburgo">Lussemburgo</option>
+                  <option value="mosca">Mosca</option>
+                  <option value="praga">Praga</option>
+                  <option value="copenaghen">Copenaghen</option>
+                  <option value="berlino">Berlino</option>
                 </select>
               </div>
               <div class="col-sm">
                 <input type="date" id="aDate" name="aDate" required>
                 <script src="./js/todaydate.js"></script>
-                <input type="date" id="rDate" name="rDate" required>
+                <!-- <input type="date" id="rDate" name="rDate" required> -->
               </div>
             </div>
           </div>

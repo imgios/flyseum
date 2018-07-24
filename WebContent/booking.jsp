@@ -23,6 +23,7 @@
 			      <th scope="col">Data di partenza</th>
 			      <th scope="col">Data di arrivo</th>
 			      <th scope="col">Prezzo</th>
+			      <th scope="col">&nbsp;</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -39,12 +40,13 @@
 			  		out.println("<td>"+flight.getDataPartenza().toString().split("\\.")[0]+"</td>");
 			  		out.println("<td>"+flight.getDataArrivo().toString().split("\\.")[0]+"</td>");
 			  		out.println("<td>"+flight.getPrezzo()+"</td>");
+			  		out.println("<td><a href=\"RemoveSelectedFlight?flightId="+flight.getId()+"&type=get\" class=\"btn btn-danger\">Rimuovi</a></td>");
 			  		out.println("</tr>");
 			  	}
 			  	%>
 			  </tbody>
-			</table>
-			<p class="text-right"><button type="button" class="btn btn-sm btn-success">Procedi all'acquisto!</button></p></div>
+			</table></div>
+			<p class="text-right"><button type="button" class="btn btn-sm btn-success">Procedi all'acquisto!</button></p>
 			<% } %>
 		</div>
 		<%@include file="./parts/footer.jsp"%>

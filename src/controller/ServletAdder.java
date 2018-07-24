@@ -1,10 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +37,7 @@ public class ServletAdder extends HttpServlet {
 		Float prezzo = Float.parseFloat(request.getParameter("newPrice"));
 		Timestamp dateDeparture = Timestamp.valueOf(request.getParameter("newDateDep")+" "+request.getParameter("newTimeDep")+":00");
 		Timestamp dateArrival = Timestamp.valueOf(request.getParameter("newDateArr")+" "+request.getParameter("newTimeArr")+":00");
-		Integer posti = Integer.parseInt(request.getParameter("newMax"));
+		//Integer posti = Integer.parseInt(request.getParameter("newMax"));
 		
 		try {
 			ProductBeanDAO pbDAO = new ProductBeanDAO();
