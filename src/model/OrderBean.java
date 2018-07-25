@@ -5,8 +5,8 @@ public class OrderBean {
 	private Integer idProd;
 	
 	public OrderBean() {
-		this.email = null;
-		this.idProd = null;
+		this.email = "";
+		this.idProd = 0;
 	}
 	
 	public OrderBean(String email,Integer idProd) {

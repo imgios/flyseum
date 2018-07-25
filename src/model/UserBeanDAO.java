@@ -41,6 +41,110 @@ public class UserBeanDAO {
 		return null;
 	 }
 	 
+	 public synchronized UserBean changeEmail(UserBean ub, String oldemail, String newemail) {
+		 Connection conn = null;
+		 PreparedStatement ps = null;
+		 
+		 try {
+			 conn = ConnectionPool.getConnection();
+			 String sql = new String("SELECT * FROM user WHERE email = ? AND password = ?");
+			 ps = conn.prepareStatement(sql);
+			 ps.setString(1, ub.getEmail());
+			 ps.setString(2, ub.getPsw());
+			 
+			 ResultSet res = ps.executeQuery();
+			 String checkOld = null;
+			 
+			 if(res.next()) {
+				 checkOld = res.getString("email");
+				 System.out.println("test old and new");
+				 System.out.println(oldemail);
+				 System.out.println(checkOld);
+				 if(checkOld.contentEquals(oldemail)) {
+					 PreparedStatement prepstat = conn.prepareStatement("UPDATE user SET email = ? WHERE email = ?");
+					 prepstat.setString(1, newemail);
+					 prepstat.setString(2, oldemail);
+					 int state = prepstat.executeUpdate();
+					 
+					 if(state != 0) {
+						 ub.setEmail(newemail);
+						 System.out.println("email modificata");
+						 
+						 return ub;
+					 }
+					 else {
+							System.out.println("No changes");
+							return null;
+						}
+						
+				 } 
+			 }
+		 }catch (SQLException e) {
+					e.printStackTrace();
+					}
+				 	finally {
+						try {
+						ps.close();
+						ConnectionPool.releaseConnection(conn);
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					
+		 return null;			
+	 }
+	 
+	 public synchronized UserBean changePsw(UserBean ub, String oldpsw, String newpsw) {
+		 Connection conn = null;
+		 PreparedStatement ps = null;
+		 
+		 try {
+			 conn = ConnectionPool.getConnection();
+			 String sql = new String("SELECT * FROM user WHERE email = ? AND password = ?");
+			 ps = conn.prepareStatement(sql);
+			 ps.setString(1, ub.getEmail());
+			 ps.setString(2, ub.getPsw());
+			 
+			 ResultSet res = ps.executeQuery();
+			 String checkOld = null;
+			 
+			 if(res.next()) {
+				 checkOld = res.getString("password");
+				 
+				 if(checkOld.contentEquals(oldpsw)) {
+					 PreparedStatement prepstat = conn.prepareStatement("UPDATE user SET password = ? WHERE password = ?");
+					 prepstat.setString(1, newpsw);
+					 prepstat.setString(2, oldpsw);
+					 int state = prepstat.executeUpdate();
+					 
+					 if(state != 0) {
+						 ub.setPsw(newpsw);
+						 System.out.println("psw modificata");
+						 
+						 return ub;
+					 }
+					 else {
+							System.out.println("No changes");
+							return null;
+						}
+						
+				 } 
+			 }
+		 }catch (SQLException e) {
+					e.printStackTrace();
+					}
+				 	finally {
+						try {
+						ps.close();
+						ConnectionPool.releaseConnection(conn);
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					
+		 return null;			
+	 }
+	 
 	 public synchronized UserBean UserRegistration(String email, String password, String name, String surname){
 		 Connection conn =  null;
 		 PreparedStatement ps = null;

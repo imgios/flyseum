@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,8 @@ import model.CartBean;
 import model.CartBeanDAO;
 import model.UserBean;
 import model.UserBeanDAO;
+import model.OrderBean;
+import model.OrderBeanDAO;
 
 /**
  * Servlet implementation class ServletLogin
@@ -66,6 +69,13 @@ public class ServletLogin extends HttpServlet {
 				// testing
 				System.out.println(beanUser.getEmail()+" "+cartUser.isEmpty());
 				System.out.print(cartUser.getAllProduct());
+				OrderBeanDAO obDAO = new OrderBeanDAO();
+				ArrayList<OrderBean> ordini = obDAO.getOrders(beanUser.getEmail());
+				if (ordini.isEmpty()) {
+					session.setAttribute("nordini", 0);
+				} else {
+					session.setAttribute("nordini", ordini.size());
+				}
 				RequestDispatcher rq = request.getRequestDispatcher("./infopages/success.jsp");
 				rq.forward(request, response);
 			}

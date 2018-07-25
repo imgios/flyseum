@@ -16,7 +16,6 @@
           <div class="list-group" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Dashboard</a>
             <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profilo</a>
-            <a class="list-group-item list-group-item-action" id="list-orders-list" data-toggle="list" href="#list-orders" role="tab" aria-controls="orders">Prenotazioni</a>
             <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Impostazioni</a>
             <% if ("admin".equals(user.getRole())) {%>
             <a class="list-group-item disabled bg-info" id="list-admin-list" data-toggle="list"role="tab">Amministrazione</a>
@@ -30,13 +29,6 @@
             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
               <p class="h3 my-0">Bentornato, <%=user.getNome()%>! <span class="text-muted small">È un buon periodo per prenotare voli, non pensi? <i class="em em-sunglasses small"></i></span></p>
               <br/>
-              <p class="my-2"><i class="em em-ticket"></i> Ecco la tua prossima prenotazione:</p>
-              <dl id="nextFlight">
-                <dt>Destinazione</dt>
-                <dd id="nextDestination">null</dd>
-                <dt>Data</dt>
-                <dd id="nextDate">null</dd>
-              </dl>
             </div>
             <!-- end dashboard / start profile -->
             <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
@@ -47,14 +39,11 @@
                 <div class="col-8">
                   <p class="my-0"><span class="font-weight-bold">Nome:</span> <%=user.getNome()%> <%=user.getCognome()%></p>
                   <p class="my-0"><span class="font-weight-bold">Email:</span> <%=user.getEmail()%></p>
-                  <p class="my-0"><span class="font-weight-bold">Prenotazioni effettuate:</span> <span id="userOrders">(null)</span></p>
                 </div>
               </div>
             </div>
-            <!-- end profile / start orders -->
-            <div class="tab-pane fade" id="list-orders" role="tabpanel" aria-labelledby="list-orders-list">work in progress</div>
             <!-- end orders / start settings -->
-            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">work in progress</div>
+            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"><%@ include file="./parts/usersettings.jsp" %></div>
             <!-- end settings -->
             <% if ("admin".equals(user.getRole())) {%>
             <!-- start admin -->

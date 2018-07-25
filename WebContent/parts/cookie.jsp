@@ -34,5 +34,5 @@ Cookie [] cookies = request.getCookies();
 <%@page import="model.ProductBean"%>
 <%-- flightbeanDAO to add --%>
 <%@page import="model.ProductBeanDAO"%>
-<%-- ArrayList --%>
-<%@ page import ="java.util.ArrayList"%>
+<%--ArrayList --%>
+<%@page import="java.util.ArrayList"%>

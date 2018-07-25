@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Arrays;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,11 +41,22 @@ public class ServletAdder extends HttpServlet {
 		Timestamp dateArrival = Timestamp.valueOf(request.getParameter("newDateArr")+" "+request.getParameter("newTimeArr")+":00");
 		//Integer posti = Integer.parseInt(request.getParameter("newMax"));
 		
+		String mete[] = {"tirana","andorra la vella","vienna","bruxelles","minsk","sarajevo","sofia",
+		  "nicosia","zagabria","copenaghen","tallinn","helsinki","parigi","berlino",
+		  "atene","dublino","reykjavík","roma","pristina","riga","vaduz","vilnius",
+		  "lussemburgo","skopje","la valletta","chisinau","monaco","podgorica","oslo",
+		  "amsterdam","varsavia","lisbona","londra","praga","bucarest","mosca","città di san marino",
+		  "belgrado","bratislava","lubiana","madrid","stoccolma","berna","kiev","budapest","città del vaticano"};
+		
+		dest.toLowerCase();
+		
 		try {
+			Timestamp today = new Timestamp(System.currentTimeMillis());
+			
 			ProductBeanDAO pbDAO = new ProductBeanDAO();
 			ProductBean pb = pbDAO.newProduct(dest, depart, company, prezzo, dateDeparture, dateArrival);
 			
-			if(pb != null) {
+			if(pb != null && Arrays.asList(mete).contains(dest) && dateArrival.after(dateDeparture) && dateDeparture.after(today)) {
 				response.setStatus(200);
 			}
 			else {

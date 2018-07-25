@@ -12,8 +12,16 @@ public class UserBean {
 		psw = psw2;
 	}
 	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getEmail() {
 		return email;
+	}
+	
+	public void setPsw(String psw) {
+		this.psw = psw;
 	}
 	
 	public String getPsw() {
