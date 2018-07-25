@@ -53,6 +53,9 @@
         </div>
         <div class="col-sm-4" id="userFlights">
         	<div class="container-fluid bg-success text-white py-3">Prenotazione</div>
+        	<div class="container" id="checkoutDiv">
+        		<p class="text-right"><a href="./checkout" class="btn btn-success btn-sm">Procedi all'acquisto</a></p>
+        	</div>
 		</div>
       </div>
        <% if (!onlygo) { %>

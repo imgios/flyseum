@@ -18,7 +18,7 @@ import model.UserBean;
 /**
  * Servlet implementation class ServletOrder
  */
-@WebServlet("/ServletOrder")
+@WebServlet("/checkout")
 public class ServletOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,10 +39,12 @@ public class ServletOrder extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		UserBean ub = (UserBean) session.getAttribute("user");
 		CartBean cart = (CartBean) session.getAttribute("cart");
+		OrderBean ob = new OrderBean();
 		
 		try {
 			
-			OrderBean ob = new OrderBean(ub.getEmail(),cart.getProduct(0).getId());
+			ob.setEmail(ub.getEmail());
+			ob.setID(cart.getProduct(0).getId());
 			OrderBeanDAO obDAO = new OrderBeanDAO();
 			
 			if(ob == null || ub == null) {
