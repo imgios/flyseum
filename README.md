@@ -1,5 +1,5 @@
 <p align="center">
-  <sub><span>&#9992;</span></sub>
+  <sub>🛫</sub>
   <br/><i>FLYSEUM</i>
   <br/><sub>European flight booking website</sub>
 </p>
