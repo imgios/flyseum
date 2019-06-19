@@ -1,8 +1,21 @@
-## Flyseum :airplane:
-Flyseum is a Web Development project for academic purposes. :mortar_board:
+<p align="center">
+  <sub><span>&#9992;</span></sub>
+  <br/><i>FLYSEUM</i>
+  <br/><sub>European flight booking website</sub>
+</p>
 
----
-> Bootstrap, HTML5, CSS, JAVA, JavaScript and jQuery.
+Flyseum is a Web Development project for academic purposes. It's a little portal where you can easily find flights in the european zone, taking off from Rome.
+
+It has been made with:
+- Java, using Java Servlets as _controllers_, JavaBeans as _model_ and JavaServer Pages as _view_ (MVC pattern)
+- MySQL
+- HTML5 & CSS3
+- Bootstrap in order to make it mobile-first and responsive
+- JavaScript, jQuery and AJAX
+
+and deployed on Tomcat.
 
 ## To-do
-- [ ] Crypt password
+- [ ] Crypt Password
+- [ ] Order History
+- [ ] Improve Dashboard UI
