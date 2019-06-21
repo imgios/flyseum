@@ -15,11 +15,6 @@ It has been made with:
 
 and deployed on Tomcat.
 
-## To-do
-- [ ] Crypt Password
-- [ ] Order History
-- [ ] Improve Dashboard UI
-
 # Deployment
 Here's a little how-to deploy this project.
 
