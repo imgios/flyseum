@@ -19,3 +19,35 @@ and deployed on Tomcat.
 - [ ] Crypt Password
 - [ ] Order History
 - [ ] Improve Dashboard UI
+
+# Deployment
+Here's a little how-to deploy this project.
+
+Flyseum can be deployed on Tomcat through the IDE (I picked Eclipse) or manually with the .war file.
+
+### Prerequisites
+- latest JDK
+- Apache Tomcat
+- Eclipse Java EE (optional: it's necessary only if you don't want to deploy manually the .war file)
+
+### Deployment with Eclipse Java EE
+1. Clone the repository
+```bash
+$ git clone https://github.com/imgios/flyseum.git
+```
+2. Import the project inside the IDE
+3. Embed Tomcat in Eclipse ([see how-to](https://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.jst.server.ui.doc.user%2Ftopics%2Ftomcat.html))
+4. Publish the project on Tomcat and click on run
+
+### Deployment with .WAR
+The final .war file isn't avaiable yet, but it will be soon.
+
+At the moment:
+1. Clone the repository
+```bash
+$ git clone https://github.com/imgios/flyseum.git
+```
+2. Import the project inside the IDE
+3. Export as Web Archive (WAR)
+4. Drop the .WAR file into the $CATALINA_HOME\webapps directory of your Tomcat server
+5. Start the server and visit localhost:8080/Flyseum
