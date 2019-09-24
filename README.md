@@ -37,7 +37,8 @@ $ git clone https://github.com/imgios/flyseum.git
 ### Deployment with .WAR
 The final .war file isn't avaiable yet, but it will be soon.
 
-At the moment:
+<details><summary markdown="span"><strong>Workaround</strong></summary>
+
 1. Clone the repository
 ```bash
 $ git clone https://github.com/imgios/flyseum.git
@@ -46,3 +47,5 @@ $ git clone https://github.com/imgios/flyseum.git
 3. Export as Web Archive (WAR)
 4. Drop the .WAR file into the $CATALINA_HOME\webapps directory of your Tomcat server
 5. Start the server and visit localhost:8080/Flyseum
+
+</details>
