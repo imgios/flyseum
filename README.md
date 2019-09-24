@@ -16,14 +16,14 @@ It has been made with:
 and deployed on Tomcat.
 
 ## Deployment
-Here's a little how-to deploy this project.
-
-Flyseum can be deployed on Tomcat through the IDE (I picked Eclipse) or manually with the .war file.
+Flyseum can be deployed on Tomcat through the IDE or manually with the .war file.
 
 ### Prerequisites
 - latest JDK
 - Apache Tomcat
-- Eclipse Java EE (optional: it's necessary only if you don't want to deploy manually the .war file)
+- Eclipse Java EE*
+
+<p><sub>* It's necessary only if you don't want to deploy manually the .war file. We used Eclipse to create and deploy this project on Tomcat, but you can use another IDE as well.</sub></p>
 
 ### Deployment with Eclipse Java EE
 1. Clone the repository
