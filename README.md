@@ -15,7 +15,7 @@ It has been made with:
 
 and deployed on Tomcat.
 
-# Deployment
+## Deployment
 Here's a little how-to deploy this project.
 
 Flyseum can be deployed on Tomcat through the IDE (I picked Eclipse) or manually with the .war file.
@@ -35,7 +35,7 @@ $ git clone https://github.com/imgios/flyseum.git
 4. Publish the project on Tomcat and click on run
 
 ### Deployment with .WAR
-The final .war file isn't avaiable yet, but it will be soon.
+The final .war file isn't available yet, but it will be soon.
 
 <details><summary markdown="span"><strong>Workaround</strong></summary>
 
