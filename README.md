@@ -41,5 +41,5 @@ java -jar target/dependency/webapp-runner.jar target/*.war
 - In [`sql/flyseum.sql`](https://github.com/imgios/flyseum/blob/master/sql/flyseum.sql) you can find:
   - Test user
   - Test admin
-  - Some test flight
+  - Some test flights
 - Be aware that `master branch`'s GitHub Insights aren't accurate because git counted files creation instead of movement while converting into maven.
