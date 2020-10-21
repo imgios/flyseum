@@ -42,4 +42,4 @@ java -jar target/dependency/webapp-runner.jar target/*.war
   - Test user
   - Test admin
   - Some test flight
-- Be aware that GitHub Insights aren't accurate, because git counted files creation instead of movement.
+- Be aware that `master branch`'s GitHub Insights aren't accurate because git counted files creation instead of movement while converting into maven.
