@@ -4,6 +4,8 @@
   <br/><sub>European flight booking website</sub>
 </p>
 
+<h6 align="center"><a href="https://flyseum.herokuapp.com/">Demo</a></h6>
+
 Flyseum is a Web Development project for academic purposes. It's a little maven webapp where you can easily find flights in the european zone, taking off from Rome.
 
 It has been made with:
