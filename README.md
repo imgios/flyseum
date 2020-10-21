@@ -36,10 +36,10 @@ java -jar target/dependency/webapp-runner.jar target/*.war
 4. Visit localhost and enjoy Flyseum!
 
 ## Info
-- Actually, you can do the checkout only if you're logged in.
+- Currently, you can do the checkout only if you're logged in.
 - Please, avoid accessing the database.
 - In [`sql/flyseum.sql`](https://github.com/imgios/flyseum/blob/master/sql/flyseum.sql) you can find:
   - Test user
   - Test admin
   - Some test flight
-- GitHub insights aren't accurate, because git counted files creation instead of movement.
+- Be aware that GitHub Insights aren't accurate, because git counted files creation instead of movement.
