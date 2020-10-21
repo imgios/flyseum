@@ -80,7 +80,7 @@
           <executions>
             <execution>
               <phase>package</phase>
-              <goals><goal>copy</goal></goals>
+              <goals>copy</goals>
               <configuration>
                 <artifactItems>
                   <artifactItem>
