@@ -4,7 +4,7 @@
   <br/><sub>European flight booking website</sub>
 </p>
 
-Flyseum is a Web Development project for academic purposes. It's a little website where you can easily find flights in the european zone, taking off from Rome.
+Flyseum is a Web Development project for academic purposes. It's a little maven webapp where you can easily find flights in the european zone, taking off from Rome.
 
 It has been made with:
 - Java, using Java Servlets as _controllers_, JavaBeans as _model_ and JavaServer Pages as _view_ (MVC pattern)
@@ -13,39 +13,32 @@ It has been made with:
 - Bootstrap in order to make it mobile-first and responsive
 - JavaScript, jQuery and AJAX
 
-and deployed on Tomcat.
-
 ## Deployment
-Flyseum can be deployed on Tomcat through the IDE or manually with the .war file.
+Flyseum can be deployed with Maven or manually with the .war file.
 
 ### Prerequisites
+- Maven
 - latest JDK
-- Apache Tomcat
-- Eclipse Java EE*
 
-<p><sub>* It's necessary only if you don't want to deploy manually the .war file. We used Eclipse to create and deploy this project on Tomcat, but you can use another IDE as well.</sub></p>
-
-### Deployment with Eclipse Java EE
+### Deployment with Maven
 1. Clone the repository
 ```bash
 $ git clone https://github.com/imgios/flyseum.git
 ```
-2. Import the project inside the IDE
-3. Embed Tomcat in Eclipse ([see how-to](https://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.jst.server.ui.doc.user%2Ftopics%2Ftomcat.html))
-4. Publish the project on Tomcat and click on run
-
-### Deployment with .WAR
-The final .war file isn't available yet, but it will be soon.
-
-<details><summary markdown="span"><strong>Workaround</strong></summary>
-
-1. Clone the repository
+2. Move in `/flyseum` dir and package it with Maven:
 ```bash
-$ git clone https://github.com/imgios/flyseum.git
+mvn package
 ```
-2. Import the project inside the IDE
-3. Export as Web Archive (WAR)
-4. Drop the .WAR file into the $CATALINA_HOME\webapps directory of your Tomcat server
-5. Start the server and visit localhost:8080/Flyseum
+3. Deploy the project with java:
+```bash
+java -jar target/dependency/webapp-runner.jar target/*.war
+```
+4. Visit localhost and enjoy Flyseum!
 
-</details>
+## Info
+- Actually, you can do the checkout only if you're logged in.
+- Please, avoid accessing the database.
+- In [`sql/flyseum.sql`](https://github.com/imgios/flyseum/blob/master/sql/flyseum.sql) you can find:
+  - Test user
+  - Test admin
+  - Some test flight
