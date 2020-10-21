@@ -42,3 +42,4 @@ java -jar target/dependency/webapp-runner.jar target/*.war
   - Test user
   - Test admin
   - Some test flight
+- GitHub insights aren't accurate, because git counted files creation instead of movement.
