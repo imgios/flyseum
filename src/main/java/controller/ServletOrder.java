@@ -39,10 +39,9 @@ public class ServletOrder extends HttpServlet {
 		UserBean ub = (UserBean) session.getAttribute("UserBean");
 		CartBean cart = (CartBean) session.getAttribute("cart");
 		OrderBean ob = new OrderBean();
-		System.out.println(""+ ub.getEmail());
 		
 		try {
-			
+			System.out.println(""+ ub.getEmail());
 			ob.setEmail(ub.getEmail());
 			ob.setID(cart.getProduct(0).getId());
 			OrderBeanDAO obDAO = new OrderBeanDAO();
